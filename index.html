@@ -4,6 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drone Pro Hub - Find Elite Drone Pilots Worldwide</title>
+    <meta name="description" content="Connect with 500+ verified drone pilots worldwide for film, TV, and commercial productions. FPV cinematography, heavy lift, VFX plates. From Hollywood blockbusters to indie shoots.">
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Drone Pro Hub",
+        "description": "Global network connecting productions with elite drone pilots for aerial cinematography",
+        "url": "https://droneprohub.com",
+        "logo": "https://droneprohub.com/logo.png",
+        "sameAs": [
+            "https://youtube.com/@droneprohub",
+            "https://instagram.com/droneprohub",
+            "https://linkedin.com/company/droneprohub"
+        ],
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "droneprohub@gmail.com",
+            "contactType": "customer service"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How much does it cost to hire a drone pilot?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Drone pilot rates vary by specialization and location. Basic operators charge $500-1,500/day, while Hollywood-level FPV or heavy lift specialists charge $2,500-10,000+/day. Get free quotes from verified pilots on Drone Pro Hub."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What licenses do professional drone pilots need?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Requirements vary by country: FAA Part 107 (USA), RePL/ReOC (Australia), PfCO/GVC (UK), or equivalent. All pilots on Drone Pro Hub have verified credentials and insurance."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I find a drone pilot for my production?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Search our directory by location, platform (FPV, Heavy Lift, Inspire), or specialty. Post a job brief to receive quotes from qualified pilots worldwide."
+                }
+            }
+        ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
@@ -1547,6 +1602,370 @@
                 display: block;
             }
         }
+
+        /* ===================== TRUSTED BY LOGOS ===================== */
+        .trusted-by {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid #333;
+        }
+
+        .trusted-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .trusted-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .logo-item {
+            opacity: 0.5;
+            transition: opacity 0.2s;
+        }
+
+        .logo-item:hover {
+            opacity: 0.8;
+        }
+
+        .studio-logo {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 14px;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        @media (max-width: 768px) {
+            .trusted-logos {
+                gap: 24px;
+            }
+            .studio-logo {
+                font-size: 12px;
+            }
+        }
+
+        /* ===================== NEWSLETTER SECTION ===================== */
+        .newsletter-section {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+
+        .newsletter-box {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 128, 0, 0.08);
+            border: 1px solid rgba(255, 128, 0, 0.2);
+            border-radius: 20px;
+            padding: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .newsletter-content {
+            flex: 1;
+        }
+
+        .nl-badge {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--papaya-orange);
+            margin-bottom: 12px;
+        }
+
+        .newsletter-content h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .newsletter-content p {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+        }
+
+        .newsletter-form input {
+            padding: 16px 20px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            font-size: 15px;
+            background: #1a1a1a;
+            color: var(--white);
+            width: 260px;
+        }
+
+        .newsletter-form input::placeholder {
+            color: #555;
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--papaya-orange);
+        }
+
+        .newsletter-form button {
+            padding: 16px 28px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .newsletter-form button:hover {
+            background: #ff9933;
+            transform: translateY(-1px);
+        }
+
+        @media (max-width: 800px) {
+            .newsletter-box {
+                flex-direction: column;
+                text-align: center;
+                padding: 32px 24px;
+            }
+            .newsletter-form {
+                flex-direction: column;
+                width: 100%;
+            }
+            .newsletter-form input {
+                width: 100%;
+            }
+        }
+
+        /* ===================== FAQ SECTION ===================== */
+        .faq-section {
+            padding: 80px 24px;
+            background: #0d0d0d;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 900px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .faq-item {
+            background: #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            text-align: left;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .faq-question:hover {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .faq-question svg {
+            width: 20px;
+            height: 20px;
+            color: #666;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+        }
+
+        .faq-item.open .faq-question svg {
+            transform: rotate(180deg);
+            color: var(--papaya-orange);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding: 0 24px 20px;
+        }
+
+        .faq-answer p {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.7;
+        }
+
+        /* ===================== NEWSLETTER POPUP ===================== */
+        .newsletter-popup {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 360px;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-popup.minimized {
+            width: auto;
+        }
+
+        .newsletter-popup.minimized .popup-content {
+            display: none;
+        }
+
+        .popup-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: rgba(255, 128, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 128, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .popup-header-text {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .popup-toggle {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 4px;
+            transition: color 0.2s;
+        }
+
+        .popup-toggle:hover {
+            color: var(--white);
+        }
+
+        .popup-content {
+            padding: 24px 20px;
+        }
+
+        .popup-content h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .popup-content p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .popup-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .popup-form input {
+            padding: 14px 16px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            font-size: 14px;
+            background: #252525;
+            color: var(--white);
+        }
+
+        .popup-form input::placeholder {
+            color: #666;
+        }
+
+        .popup-form input:focus {
+            outline: none;
+            border-color: var(--papaya-orange);
+        }
+
+        .popup-form button {
+            padding: 14px 20px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .popup-form button:hover {
+            background: #ff9933;
+        }
+
+        .popup-dismiss {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .popup-dismiss a {
+            font-size: 12px;
+            color: #666;
+            text-decoration: none;
+        }
+
+        .popup-dismiss a:hover {
+            color: #888;
+        }
+
+        @media (max-width: 480px) {
+            .newsletter-popup {
+                left: 16px;
+                right: 16px;
+                width: auto;
+                bottom: 16px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1805,18 +2224,6 @@
             <div class="hero-glow"></div>
         </div>
         <div class="hero-content">
-
-            <!-- Newsletter Signup -->
-            <div class="hero-newsletter-b">
-                <div class="nl-label">Join The Weekly <span>Rotor</span></div>
-                <div class="nl-title">Insider tips, 3D files & exclusive deals you won't find anywhere else</div>
-                <div class="nl-desc">Get speed drone build breakdowns, honest gear reviews, behind-the-scenes from Hollywood shoots, exclusive 3D print files, and first access to limited drops — delivered straight to your inbox every week.</div>
-                <form action="#" method="POST">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe Free</button>
-                </form>
-            </div>
-
             <div class="hero-badge">The Global Pilot Network</div>
             <h1>Find The World's Best <span>Drone Pilots</span></h1>
             <p class="hero-sub">Connect with verified aerial cinematographers for film, TV, and commercial productions. From Hollywood blockbusters to indie shoots.</p>
@@ -1862,6 +2269,48 @@
                     <div class="stat-number">10K<span>+</span></div>
                     <div class="stat-label">Productions Served</div>
                 </div>
+            </div>
+
+            <!-- Trusted By Logos -->
+            <div class="trusted-by">
+                <p class="trusted-label">Our pilots have worked with</p>
+                <div class="trusted-logos">
+                    <div class="logo-item">
+                        <span class="studio-logo">DISNEY</span>
+                    </div>
+                    <div class="logo-item">
+                        <span class="studio-logo">PARAMOUNT</span>
+                    </div>
+                    <div class="logo-item">
+                        <span class="studio-logo">HBO</span>
+                    </div>
+                    <div class="logo-item">
+                        <span class="studio-logo">NETFLIX</span>
+                    </div>
+                    <div class="logo-item">
+                        <span class="studio-logo">WARNER BROS</span>
+                    </div>
+                    <div class="logo-item">
+                        <span class="studio-logo">UNIVERSAL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-box">
+                <div class="newsletter-content">
+                    <div class="nl-badge">📬 The Weekly Rotor</div>
+                    <h3>Insider tips, 3D files & exclusive deals</h3>
+                    <p>Speed drone builds, gear reviews, Hollywood BTS, 3D print files, and first access to limited drops — delivered weekly.</p>
+                </div>
+                <form class="newsletter-form" action="#" method="POST">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe Free</button>
+                </form>
             </div>
         </div>
     </section>
@@ -2138,6 +2587,78 @@
         </div>
     </section>
 
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-label">Common Questions</div>
+                <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>How much does it cost to hire a drone pilot?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Rates vary by specialization and location. Basic operators typically charge $500-1,500/day, while Hollywood-level FPV cinematographers or heavy lift specialists charge $2,500-10,000+/day. Post a job brief to get free quotes from verified pilots.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>What licenses do professional drone pilots need?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Requirements vary by country: FAA Part 107 (USA), RePL/ReOC (Australia), PfCO/GVC (UK), or equivalent certifications. All pilots on Drone Pro Hub have verified credentials and appropriate insurance coverage.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I find a drone pilot for my production?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Search our directory by location, platform (FPV, Heavy Lift, DJI Inspire), or specialty. You can also post a job brief describing your project to receive quotes from qualified pilots worldwide within 24 hours.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>What's the difference between FPV and traditional drone cinematography?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>FPV (First Person View) drones are flown manually through goggles, enabling dynamic, immersive shots that fly through spaces. Traditional drones use GPS-stabilized flight for smooth, cinematic aerial shots. Many productions use both for different scenes.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>Do pilots provide their own equipment?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most professional pilots bring their own drones, cameras, and support equipment. Each pilot's profile lists their gear (DJI Inspire 3, Alta X, RED Komodo, etc.). For specialized requirements, discuss equipment needs when requesting a quote.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" onclick="toggleFaq(this)">
+                        <span>How do I get listed as a pilot on Drone Pro Hub?</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Click "Pilots — Get Listed Free" to create your profile. Add your credentials, equipment, portfolio, and location. After verification, you'll appear in search results and can receive job inquiries from productions worldwide.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-grid">
@@ -2196,6 +2717,28 @@
         </div>
     </footer>
 
+    <!-- Newsletter Popup -->
+    <div class="newsletter-popup" id="newsletterPopup">
+        <div class="popup-header" onclick="togglePopup()">
+            <div class="popup-header-text">
+                <span>📬</span>
+                <span>The Weekly Rotor</span>
+            </div>
+            <button class="popup-toggle" id="popupToggleBtn">−</button>
+        </div>
+        <div class="popup-content">
+            <h4>Join 2,500+ Drone Pros</h4>
+            <p>Weekly gear reviews, Hollywood BTS, speed builds, 3D files, and exclusive deals.</p>
+            <form class="popup-form" action="#" method="POST">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe Free</button>
+            </form>
+            <div class="popup-dismiss">
+                <a href="#" onclick="dismissPopup(); return false;">No thanks, I'll miss out</a>
+            </div>
+        </div>
+    </div>
+
     <script>
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
@@ -2207,6 +2750,33 @@
         function toggleSubmenu(item) {
             item.classList.toggle('expanded');
         }
+
+        // FAQ Toggle
+        function toggleFaq(button) {
+            const faqItem = button.parentElement;
+            faqItem.classList.toggle('open');
+        }
+
+        // Newsletter Popup
+        function togglePopup() {
+            const popup = document.getElementById('newsletterPopup');
+            const toggleBtn = document.getElementById('popupToggleBtn');
+            popup.classList.toggle('minimized');
+            toggleBtn.textContent = popup.classList.contains('minimized') ? '+' : '−';
+        }
+
+        function dismissPopup() {
+            const popup = document.getElementById('newsletterPopup');
+            popup.style.display = 'none';
+            localStorage.setItem('newsletterDismissed', 'true');
+        }
+
+        // Check if popup was dismissed
+        document.addEventListener('DOMContentLoaded', function() {
+            if (localStorage.getItem('newsletterDismissed') === 'true') {
+                document.getElementById('newsletterPopup').style.display = 'none';
+            }
+        });
     </script>
 
 </body>
