@@ -304,19 +304,12 @@
         /* ===================== HERO SECTION ===================== */
         .hero {
             position: relative;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            display: flex;
+            justify-content: center;
             align-items: center;
             padding: 80px 24px;
+            min-height: 50vh;
             overflow: hidden;
-        }
-
-        @media (max-width: 900px) {
-            .hero {
-                grid-template-columns: 1fr;
-                padding: 60px 24px;
-            }
         }
 
         .hero-bg {
