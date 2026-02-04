@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Deals - DronePro Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --papaya-orange: #FF8000;
+            --phantom-black: #1A1A1A;
+            --dark-grey: #333333;
+            --mid-grey: #666666;
+            --light-grey: #F5F5F5;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--phantom-black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--papaya-orange);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            color: var(--phantom-black);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+
+        .logo-text span {
+            color: var(--papaya-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-item:hover .nav-link svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: #252525;
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            font-size: 14px;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .dropdown-item:hover {
+            background: #333;
+            color: var(--white);
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255, 128, 0, 0.2);
+            color: var(--papaya-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #333;
+            margin: 8px 0;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-login {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-login:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #ff9933;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+
+        /* ===================== HERO SECTION ===================== */
+        .hero {
+            position: relative;
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff08" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background-size: 40px 40px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 span {
+            color: var(--papaya-orange);
+        }
+
+        .hero-sub {
+            font-size: 20px;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ===================== SECTIONS ===================== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .section-title span {
+            color: var(--papaya-orange);
+        }
+
+        .section-desc {
+            font-size: 18px;
+            color: #888;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Deals Grid */
+        .deals-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .deals-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .deals-grid { grid-template-columns: 1fr; }
+        }
+
+        .deal-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            color: var(--white);
+            transition: all 0.3s;
+            border: 1px solid transparent;
+            position: relative;
+        }
+
+        .deal-card:hover {
+            border-color: var(--papaya-orange);
+            transform: translateY(-4px);
+        }
+
+        .deal-badge {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 10px;
+            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+
+        .deal-logo {
+            width: 80px;
+            height: 80px;
+            background: #252525;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .deal-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .deal-card p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .deal-code-section {
+            background: #252525;
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        .deal-code-label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .deal-code {
+            font-family: 'Courier New', monospace;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            font-size: 18px;
+            letter-spacing: 2px;
+        }
+
+        .deal-savings {
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        .deal-savings strong {
+            color: var(--papaya-orange);
+        }
+
+        /* Partners Section */
+        .partners-section {
+            margin-top: 80px;
+            padding-top: 80px;
+            border-top: 1px solid #2a2a2a;
+        }
+
+        .partners-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 24px;
+        }
+
+        @media (max-width: 900px) {
+            .partners-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .partners-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        .partner-logo {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            height: 150px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .partner-logo:hover {
+            border-color: var(--papaya-orange);
+            background: rgba(255, 128, 0, 0.05);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 320px;
+            background: #1a1a1a;
+            z-index: 2000;
+            padding: 24px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .mobile-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-nav-item {
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .mobile-nav-link svg {
+            color: #666;
+            transition: transform 0.2s;
+        }
+
+        .mobile-nav-item.expanded .mobile-nav-link svg {
+            transform: rotate(90deg);
+        }
+
+        .mobile-subnav {
+            display: none;
+            padding-bottom: 16px;
+        }
+
+        .mobile-nav-item.expanded .mobile-subnav {
+            display: block;
+        }
+
+        .mobile-subnav a {
+            display: block;
+            padding: 10px 0 10px 16px;
+            font-size: 14px;
+            color: #888;
+            text-decoration: none;
+            border-left: 2px solid #333;
+        }
+
+        .mobile-subnav a:hover {
+            color: var(--white);
+            border-left-color: var(--papaya-orange);
+        }
+
+        .mobile-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu,
+            .mobile-overlay {
+                display: block;
+            }
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #0d0d0d;
+            border-top: 1px solid #2a2a2a;
+            padding: 80px 24px 40px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: #666;
+            margin: 16px 0 24px;
+            max-width: 300px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            padding: 8px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: var(--papaya-orange);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        .footer-bottom a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--papaya-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="homepage-prototype.html" class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </a>
+
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="gear.html" class="nav-link">
+                        Gear
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="gear-mates-rates.html" class="dropdown-item">Aidan's Mates Rates</a>
+                        <a href="gear-drones.html" class="dropdown-item">Drone Reviews</a>
+                        <a href="speed-drone.html" class="dropdown-item">Speed Drone (LIMITED)</a>
+                        <a href="deals.html" class="dropdown-item">Current Deals</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <a href="#" class="nav-cta">Pilots — Get Listed Free</a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </div>
+            <button class="mobile-close" onclick="toggleMobileMenu()">×</button>
+        </div>
+
+        <div class="mobile-nav-item" onclick="toggleSubmenu(this)">
+            <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">
+                Gear
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+            <div class="mobile-subnav">
+                <a href="gear-mates-rates.html">Aidan's Mates Rates</a>
+                <a href="gear-drones.html">Drone Reviews</a>
+                <a href="speed-drone.html" style="color: var(--papaya-orange);">⚡ Speed Drone — Limited</a>
+                <a href="deals.html">Current Deals</a>
+            </div>
+        </div>
+
+        <a href="#" class="mobile-cta">Pilots — Get Listed Free</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-glow"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Current <span>Deals</span></h1>
+            <p class="hero-sub">Active discount codes and partner promotions. Updated weekly with new offers.</p>
+        </div>
+    </section>
+
+    <!-- Deals Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="deals-grid">
+                <!-- DJI Enterprise -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">📦</div>
+                    <h3>DJI Enterprise</h3>
+                    <p>Professional drones and enterprise solutions.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">DPH-AIDAN-10</div>
+                    </div>
+                    <div class="deal-savings"><strong>10% off</strong> select Inspire & Matrice</div>
+                </a>
+
+                <!-- Freefly Systems -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">✈️</div>
+                    <h3>Freefly Systems</h3>
+                    <p>Heavy-lift solutions and professional platforms.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">DRONEPRO-ALTAX</div>
+                    </div>
+                    <div class="deal-savings"><strong>Special pricing</strong> on Alta X packages</div>
+                </a>
+
+                <!-- B&H Photo Video -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">📷</div>
+                    <h3>B&H Photo Video</h3>
+                    <p>Complete gear and camera equipment source.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">DRONEPRO15</div>
+                    </div>
+                    <div class="deal-savings"><strong>15% off</strong> drone and camera gear</div>
+                </a>
+
+                <!-- Sony Professional -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">🎥</div>
+                    <h3>Sony Professional</h3>
+                    <p>Cinema cameras optimized for aerial work.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">AIDAN-SONY-BPROF</div>
+                    </div>
+                    <div class="deal-savings"><strong>Educator pricing</strong> on FX30/FX3</div>
+                </a>
+
+                <!-- Tilta Grip Systems -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">⚡</div>
+                    <h3>Tilta Grip Systems</h3>
+                    <p>Gimbal rigs and stabilization systems.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">DRONEPRO-RIG</div>
+                    </div>
+                    <div class="deal-savings"><strong>12% off</strong> gimbal systems</div>
+                </a>
+
+                <!-- DJI Care -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">🔧</div>
+                    <h3>DJI Care & Support</h3>
+                    <p>Extended warranty and care programs.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">DPH-CARE-20</div>
+                    </div>
+                    <div class="deal-savings"><strong>20% off</strong> Care Extended plans</div>
+                </a>
+
+                <!-- Peak Design -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">🎒</div>
+                    <h3>Peak Design</h3>
+                    <p>Professional bags and camera accessories.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">DRONEPRO-GEAR</div>
+                    </div>
+                    <div class="deal-savings"><strong>15% off</strong> all products</div>
+                </a>
+
+                <!-- Rode Microphones -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">🎙️</div>
+                    <h3>Rode Microphones</h3>
+                    <p>Professional audio for video production.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">RODE-AIDAN-10</div>
+                    </div>
+                    <div class="deal-savings"><strong>10% off</strong> wireless systems</div>
+                </a>
+
+                <!-- Neewer Lighting -->
+                <a href="#" class="deal-card">
+                    <div class="deal-badge">ACTIVE</div>
+                    <div class="deal-logo">💡</div>
+                    <h3>Neewer Lighting</h3>
+                    <p>Professional LED and lighting kits.</p>
+                    <div class="deal-code-section">
+                        <div class="deal-code-label">Code</div>
+                        <div class="deal-code">DRONEPRO-LED</div>
+                    </div>
+                    <div class="deal-savings"><strong>20% off</strong> select kits</div>
+                </a>
+            </div>
+
+            <!-- Partners Section -->
+            <div class="partners-section">
+                <div class="partners-header">
+                    <div class="section-label">Our Partners</div>
+                    <h2 class="section-title">Trusted <span>Brands</span></h2>
+                </div>
+
+                <div class="partners-grid">
+                    <div class="partner-logo">📦</div>
+                    <div class="partner-logo">✈️</div>
+                    <div class="partner-logo">📷</div>
+                    <div class="partner-logo">🎥</div>
+                    <div class="partner-logo">⚡</div>
+                    <div class="partner-logo">🔧</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">DPH</div>
+                    <div class="logo-text">DRONE PRO <span>HUB</span></div>
+                </div>
+                <p>The global network for professional aerial cinematographers. Find pilots, learn from the best, and grow your career.</p>
+                <div class="footer-social">
+                    <a href="#" title="YouTube">▶</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="TikTok">♪</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Gear & Reviews</h4>
+                <a href="gear.html">Gear Hub</a>
+                <a href="gear-drones.html">Drone Reviews</a>
+                <a href="gear-mates-rates.html">Mates Rates</a>
+                <a href="deals.html">Current Deals</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Featured</h4>
+                <a href="speed-drone.html">Speed Drone</a>
+                <a href="#">FPV Builds</a>
+                <a href="#">Camera Reviews</a>
+                <a href="#">Accessories</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Community</h4>
+                <a href="#">Join Community</a>
+                <a href="#">Pilot Network</a>
+                <a href="#">Learning Hub</a>
+                <a href="#">Newsletter</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Partner With Us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2026 DronePro Hub. All rights reserved.</div>
+            <div>
+                <a href="#">Privacy Policy</a> ·
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function toggleSubmenu(item) {
+            item.classList.toggle('expanded');
+        }
+    </script>
+
+</body>
+</html>
