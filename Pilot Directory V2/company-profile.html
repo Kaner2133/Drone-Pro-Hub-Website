@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XM2 Group - Drone Cinematography Company Profile</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --papaya-orange: #FF8000;
+            --phantom-black: #1A1A1A;
+            --dark-grey: #333333;
+            --mid-grey: #666666;
+            --light-grey: #F5F5F5;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--phantom-black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--papaya-orange);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            color: var(--phantom-black);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+
+        .logo-text span {
+            color: var(--papaya-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-item:hover .nav-link svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: #252525;
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            font-size: 14px;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .dropdown-item:hover {
+            background: #333;
+            color: var(--white);
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255, 128, 0, 0.2);
+            color: var(--papaya-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #333;
+            margin: 8px 0;
+        }
+
+        .dropdown-label {
+            padding: 8px 20px 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mega-dropdown {
+            min-width: 520px;
+            padding: 24px;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .mega-column h4 {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+            padding-left: 12px;
+        }
+
+        .mega-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: var(--white);
+            transition: background 0.15s;
+        }
+
+        .mega-item:hover {
+            background: #333;
+        }
+
+        .mega-icon {
+            width: 40px;
+            height: 40px;
+            background: #333;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .mega-text h5 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mega-text p {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-login {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-login:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #ff9933;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+
+        /* ===================== COMPANY HEADER ===================== */
+        .company-header-section {
+            padding: 60px 24px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .company-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .company-logo-large {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #333 0%, #252525 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 56px;
+            border: 2px solid var(--papaya-orange);
+        }
+
+        .company-header-info h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+
+        .company-tagline-large {
+            font-size: 18px;
+            color: var(--papaya-orange);
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .company-header-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #aaa;
+        }
+
+        .meta-value {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .company-header-cta {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .btn-primary:hover {
+            background: #ff9933;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px 32px;
+            border: 2px solid #333;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            text-align: center;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--papaya-orange);
+            color: var(--papaya-orange);
+        }
+
+        @media (max-width: 900px) {
+            .company-header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .company-header-info h1 {
+                font-size: 36px;
+            }
+            .company-header-cta {
+                flex-direction: row;
+            }
+        }
+
+        /* ===================== MAIN CONTENT ===================== */
+        .profile-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        .profile-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+        }
+
+        @media (max-width: 1024px) {
+            .profile-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* ===================== SECTIONS ===================== */
+        .profile-section {
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+
+        .section-title span {
+            color: var(--papaya-orange);
+        }
+
+        .section-desc {
+            font-size: 16px;
+            color: #888;
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+
+        /* About Section */
+        .about-content {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid #2a2a2a;
+        }
+
+        .about-content p {
+            font-size: 15px;
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-content p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Fleet Section */
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .fleet-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .fleet-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 128, 0, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .fleet-info h4 {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .fleet-info p {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Services Section */
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .service-item {
+            background: rgba(255, 128, 0, 0.1);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 10px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--papaya-orange);
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .team-member {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .team-member:hover {
+            border-color: var(--papaya-orange);
+            transform: translateY(-4px);
+        }
+
+        .team-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #333 0%, #252525 100%);
+            border-radius: 50%;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+
+        .team-member h4 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 13px;
+            color: var(--papaya-orange);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .team-link {
+            font-size: 13px;
+            color: #666;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .team-link:hover {
+            color: var(--papaya-orange);
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--papaya-orange);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+        }
+
+        .portfolio-info {
+            padding: 16px;
+        }
+
+        .portfolio-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .portfolio-type {
+            font-size: 12px;
+            color: var(--papaya-orange);
+            font-weight: 600;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .sidebar-card {
+            background: #1a1a1a;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .sidebar-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #2a2a2a;
+            font-size: 14px;
+        }
+
+        .sidebar-item:last-child {
+            border-bottom: none;
+        }
+
+        .sidebar-label {
+            color: #888;
+            flex-shrink: 0;
+        }
+
+        .sidebar-value {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .rating-stars {
+            color: var(--papaya-orange);
+            font-size: 18px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.1) 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 12px;
+            padding: 28px;
+            text-align: center;
+        }
+
+        .cta-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .cta-section p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #0d0d0d;
+            border-top: 1px solid #2a2a2a;
+            padding: 80px 24px 40px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: #666;
+            margin: 16px 0 24px;
+            max-width: 300px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            padding: 8px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: var(--papaya-orange);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        .footer-bottom a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--papaya-orange);
+        }
+
+        /* ===================== MOBILE MENU ===================== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 320px;
+            background: #1a1a1a;
+            z-index: 2000;
+            padding: 24px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .mobile-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-nav-item {
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .mobile-nav-link svg {
+            color: #666;
+            transition: transform 0.2s;
+        }
+
+        .mobile-nav-item.expanded .mobile-nav-link svg {
+            transform: rotate(90deg);
+        }
+
+        .mobile-subnav {
+            display: none;
+            padding-bottom: 16px;
+        }
+
+        .mobile-nav-item.expanded .mobile-subnav {
+            display: block;
+        }
+
+        .mobile-subnav a {
+            display: block;
+            padding: 10px 0 10px 16px;
+            font-size: 14px;
+            color: #888;
+            text-decoration: none;
+            border-left: 2px solid #333;
+        }
+
+        .mobile-subnav a:hover {
+            color: var(--white);
+            border-left-color: var(--papaya-orange);
+        }
+
+        .mobile-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 24px;
+        }
+
+        .mobile-login {
+            display: block;
+            width: 100%;
+            text-align: center;
+            color: #888;
+            font-size: 14px;
+            padding: 16px;
+            text-decoration: none;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu,
+            .mobile-overlay {
+                display: block;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </a>
+
+            <div class="nav-links">
+                <!-- Find Pilots -->
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        Find Pilots
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="index.html" class="dropdown-item">Search All Pilots</a>
+                        <a href="companies.html" class="dropdown-item">Browse Companies</a>
+                        <a href="index.html" class="dropdown-item">Post a Job Brief</a>
+                        <div class="dropdown-divider"></div>
+                        <div class="dropdown-label">By Platform</div>
+                        <a href="index.html" class="dropdown-item">FPV</a>
+                        <a href="index.html" class="dropdown-item">Heavy Lift</a>
+                        <a href="index.html" class="dropdown-item">DJI Inspire</a>
+                        <a href="index.html" class="dropdown-item">DJI Mavic</a>
+                        <a href="index.html" class="dropdown-item">VFX</a>
+                    </div>
+                </div>
+
+                <!-- Learn -->
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        Learn
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <div class="dropdown mega-dropdown">
+                        <div class="mega-grid">
+                            <div class="mega-column">
+                                <h4>For Producers</h4>
+                                <a href="index.html" class="mega-item">
+                                    <div class="mega-icon">📖</div>
+                                    <div class="mega-text">
+                                        <h5>Producer Guide</h5>
+                                        <p>Which drone do you need?</p>
+                                    </div>
+                                </a>
+                                <a href="index.html" class="mega-item">
+                                    <div class="mega-icon">💰</div>
+                                    <div class="mega-text">
+                                        <h5>Budget Guide</h5>
+                                        <p>What does aerial work cost?</p>
+                                    </div>
+                                </a>
+                                <a href="index.html" class="mega-item">
+                                    <div class="mega-icon">📞</div>
+                                    <div class="mega-text">
+                                        <h5>Book a Consultation</h5>
+                                        <p>Get expert production advice</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="mega-column">
+                                <h4>For Pilots & Engineers</h4>
+                                <a href="index.html" class="mega-item">
+                                    <div class="mega-icon">🎓</div>
+                                    <div class="mega-text">
+                                        <h5>Courses <span class="badge">Coming Soon</span></h5>
+                                        <p>Learn from Hollywood pilots</p>
+                                    </div>
+                                </a>
+                                <a href="index.html" class="mega-item">
+                                    <div class="mega-icon">👥</div>
+                                    <div class="mega-text">
+                                        <h5>Community</h5>
+                                        <p>Join the pilot network</p>
+                                    </div>
+                                </a>
+                                <a href="index.html" class="mega-item">
+                                    <div class="mega-icon">🎯</div>
+                                    <div class="mega-text">
+                                        <h5>1-on-1 with Aidan</h5>
+                                        <p>Cinematography & career coaching</p>
+                                    </div>
+                                </a>
+                                <a href="index.html" class="mega-item">
+                                    <div class="mega-icon">⚡</div>
+                                    <div class="mega-text">
+                                        <h5>1-on-1 with Ben</h5>
+                                        <p>Speed builds & engineering</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gear -->
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        Gear
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="index.html" class="dropdown-item">Aidan's Mates Rates</a>
+                        <a href="index.html" class="dropdown-item">Drone Reviews</a>
+                        <a href="index.html" class="dropdown-item">Camera Reviews</a>
+                        <a href="index.html" class="dropdown-item">FPV Builds</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="index.html" class="dropdown-item" style="display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--papaya-orange);">⚡</span> Speed Drone
+                            <span class="badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171;">LIMITED</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="index.html" class="dropdown-item">Current Deals</a>
+                    </div>
+                </div>
+
+                <!-- Speed Records -->
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        Speed Records
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="index.html" class="dropdown-item">Leaderboard</a>
+                        <a href="index.html" class="dropdown-item">Submit a Record</a>
+                        <a href="index.html" class="dropdown-item">Methodology</a>
+                        <a href="index.html" class="dropdown-item">About the Registry</a>
+                    </div>
+                </div>
+
+                <!-- About -->
+                <div class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        About
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="index.html" class="dropdown-item">Our Story</a>
+                        <a href="index.html" class="dropdown-item">Aidan Kelly</a>
+                        <a href="index.html" class="dropdown-item">Ben Biggs</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="index.html" class="dropdown-item">Contact</a>
+                        <a href="index.html" class="dropdown-item">Partner With Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <a href="index.html" class="nav-login">Contact</a>
+                <a href="index.html" class="nav-login">Login</a>
+                <a href="index.html" class="nav-cta">Pilots — Get Listed Free</a>
+
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </div>
+            <button class="mobile-close" onclick="toggleMobileMenu()">×</button>
+        </div>
+
+        <div class="mobile-nav-item" onclick="toggleSubmenu(this)">
+            <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">
+                Find Pilots
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+            <div class="mobile-subnav">
+                <a href="index.html">Search All Pilots</a>
+                <a href="companies.html">Browse Companies</a>
+                <a href="index.html">Post a Job Brief</a>
+                <a href="index.html">FPV</a>
+                <a href="index.html">Heavy Lift</a>
+                <a href="index.html">DJI Inspire</a>
+                <a href="index.html">DJI Mavic</a>
+                <a href="index.html">VFX</a>
+            </div>
+        </div>
+
+        <div class="mobile-nav-item" onclick="toggleSubmenu(this)">
+            <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">
+                Learn
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+            <div class="mobile-subnav">
+                <a href="index.html">Producer Guide</a>
+                <a href="index.html">Budget Guide</a>
+                <a href="index.html">Courses (Coming Soon)</a>
+                <a href="index.html">Community</a>
+                <a href="index.html">1-on-1 with Aidan</a>
+                <a href="index.html">1-on-1 with Ben</a>
+            </div>
+        </div>
+
+        <div class="mobile-nav-item" onclick="toggleSubmenu(this)">
+            <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">
+                Gear
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+            <div class="mobile-subnav">
+                <a href="index.html">Aidan's Mates Rates</a>
+                <a href="index.html">Drone Reviews</a>
+                <a href="index.html">Camera Reviews</a>
+                <a href="index.html" style="color: var(--papaya-orange);">⚡ Speed Drone — Limited</a>
+                <a href="index.html">Current Deals</a>
+            </div>
+        </div>
+
+        <div class="mobile-nav-item" onclick="toggleSubmenu(this)">
+            <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">
+                Speed Records
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+            <div class="mobile-subnav">
+                <a href="index.html">Leaderboard</a>
+                <a href="index.html">Submit a Record</a>
+                <a href="index.html">Methodology</a>
+                <a href="index.html">About the Registry</a>
+            </div>
+        </div>
+
+        <div class="mobile-nav-item" onclick="toggleSubmenu(this)">
+            <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">
+                About
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+            <div class="mobile-subnav">
+                <a href="index.html">Our Story</a>
+                <a href="index.html">Aidan Kelly</a>
+                <a href="index.html">Ben Biggs</a>
+                <a href="index.html">Contact</a>
+            </div>
+        </div>
+
+        <a href="index.html" class="mobile-cta">Pilots — Get Listed Free</a>
+        <a href="index.html" class="mobile-login">Already have an account? Login</a>
+    </div>
+
+    <!-- Company Header -->
+    <section class="company-header-section">
+        <div class="company-header-content">
+            <div class="company-logo-large">🎥</div>
+            <div class="company-header-info">
+                <h1>XM2 Group</h1>
+                <div class="company-tagline-large">Heavy Lift Specialists</div>
+                <div class="company-header-meta">
+                    <div class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <span class="meta-value">Sydney, Australia</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+                        <span class="meta-value">Since 2015</span>
+                    </div>
+                    <div class="meta-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span class="meta-value">18 Professionals</span>
+                    </div>
+                </div>
+            </div>
+            <div class="company-header-cta">
+                <button class="btn-primary">Get in Touch</button>
+                <button class="btn-secondary">View Portfolio</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="profile-container">
+        <div class="profile-grid">
+            <!-- Left Column -->
+            <div>
+                <!-- About Section -->
+                <div class="profile-section">
+                    <h2 class="section-title">About <span>XM2 Group</span></h2>
+                    <div class="about-content">
+                        <p>XM2 Group is a world-class heavy lift drone cinematography company based in Sydney, Australia. Founded in 2015, we've established ourselves as the go-to specialists for premium aerial cinematography on high-budget productions, including multiple Hollywood blockbusters.</p>
+                        <p>With over 18 years of combined aerial experience and 12 heavy-lift aircraft, we deliver broadcast-quality imagery from the sky. Our team understands production workflows and delivers on tight timelines with professional crews.</p>
+                        <p>From feature films to commercials, we've worked with major studios and production companies worldwide, pioneering new approaches to heavy-lift cinematography and motion control systems.</p>
+                    </div>
+                </div>
+
+                <!-- Fleet Section -->
+                <div class="profile-section">
+                    <h2 class="section-title">Fleet & <span>Equipment</span></h2>
+                    <div class="fleet-grid">
+                        <div class="fleet-item">
+                            <div class="fleet-icon">🚁</div>
+                            <div class="fleet-info">
+                                <h4>Heavy Lift Platforms</h4>
+                                <p>3x Alta X, 2x M300 RTK</p>
+                            </div>
+                        </div>
+                        <div class="fleet-item">
+                            <div class="fleet-icon">📹</div>
+                            <div class="fleet-info">
+                                <h4>Payloads</h4>
+                                <p>RED Komodo, Alexa Mini, Sony Burano</p>
+                            </div>
+                        </div>
+                        <div class="fleet-item">
+                            <div class="fleet-icon">🎥</div>
+                            <div class="fleet-info">
+                                <h4>Inspire Series</h4>
+                                <p>4x Inspire 3 with 7x focus operators</p>
+                            </div>
+                        </div>
+                        <div class="fleet-item">
+                            <div class="fleet-icon">⚡</div>
+                            <div class="fleet-info">
+                                <h4>Motion Control</h4>
+                                <p>Full MoVI systems & motion rigs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Services Section -->
+                <div class="profile-section">
+                    <h2 class="section-title">Services <span>Offered</span></h2>
+                    <div class="services-list">
+                        <div class="service-item">Heavy Lift Cinema</div>
+                        <div class="service-item">Feature Films</div>
+                        <div class="service-item">Television</div>
+                        <div class="service-item">Commercial Shoots</div>
+                        <div class="service-item">Music Videos</div>
+                        <div class="service-item">Documentaries</div>
+                        <div class="service-item">VFX Plates</div>
+                        <div class="service-item">Motion Control</div>
+                    </div>
+                </div>
+
+                <!-- Team Section -->
+                <div class="profile-section">
+                    <h2 class="section-title">Attached <span>Pilots</span></h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <div class="team-avatar">👨</div>
+                            <h4>Marcus Chen</h4>
+                            <div class="team-role">Head Pilot</div>
+                            <a href="index.html" class="team-link">View Profile →</a>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">👩</div>
+                            <h4>Sarah Okonjo</h4>
+                            <div class="team-role">Senior Operator</div>
+                            <a href="index.html" class="team-link">View Profile →</a>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">👨</div>
+                            <h4>James Miller</h4>
+                            <div class="team-role">Flight Ops Manager</div>
+                            <a href="index.html" class="team-link">View Profile →</a>
+                        </div>
+                        <div class="team-member">
+                            <div class="team-avatar">👩</div>
+                            <h4>Elena Volkov</h4>
+                            <div class="team-role">VFX Specialist</div>
+                            <a href="index.html" class="team-link">View Profile →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Section -->
+                <div class="profile-section">
+                    <h2 class="section-title">Case Studies & <span>Portfolio</span></h2>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">🎬</div>
+                            <div class="portfolio-info">
+                                <div class="portfolio-title">Hollywood Blockbuster</div>
+                                <div class="portfolio-type">Feature Film</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">📺</div>
+                            <div class="portfolio-info">
+                                <div class="portfolio-title">Prime Time Series</div>
+                                <div class="portfolio-type">Television</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">🎵</div>
+                            <div class="portfolio-info">
+                                <div class="portfolio-title">Chart-Topping Music Video</div>
+                                <div class="portfolio-type">Music Video</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">🏢</div>
+                            <div class="portfolio-info">
+                                <div class="portfolio-title">Global Brand Campaign</div>
+                                <div class="portfolio-type">Commercial</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="sidebar">
+                <!-- Quick Stats -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Company Info</h3>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Fleet Size</span>
+                        <span class="sidebar-value">12 Aircraft</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Team Size</span>
+                        <span class="sidebar-value">18 Professionals</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Founded</span>
+                        <span class="sidebar-value">2015</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Certification</span>
+                        <span class="sidebar-value">FAA Part 107</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Insurance</span>
+                        <span class="sidebar-value">$5M Coverage</span>
+                    </div>
+                </div>
+
+                <!-- Rating -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Client Reviews</h3>
+                    <div style="text-align: center; padding: 12px 0;">
+                        <div class="rating-stars" style="font-size: 32px;">★★★★★</div>
+                        <div style="color: #aaa; font-size: 13px; margin-top: 8px;">4.9 out of 5</div>
+                        <div style="color: #666; font-size: 12px; margin-top: 4px;">Based on 24 reviews</div>
+                    </div>
+                    <div style="border-top: 1px solid #2a2a2a; padding-top: 16px; margin-top: 16px; font-size: 13px; color: #888;">
+                        <p style="margin-bottom: 8px;"><strong style="color: #fff;">"Professional team, exceptional results."</strong></p>
+                        <p>- Major Studio Producer</p>
+                    </div>
+                </div>
+
+                <!-- Services Offered -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Specialties</h3>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Primary</span>
+                        <span class="sidebar-value">Heavy Lift</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Secondary</span>
+                        <span class="sidebar-value">Motion Control</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Industry</span>
+                        <span class="sidebar-value">Film & TV</span>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="cta-section">
+                    <h3>Ready to Work Together?</h3>
+                    <p>Get in touch with XM2 Group for your next aerial cinematography project.</p>
+                    <button class="btn-primary" style="width: 100%; justify-content: center;">Contact XM2 Group</button>
+                </div>
+
+                <!-- Additional Info -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Contact</h3>
+                    <div style="font-size: 13px; color: #aaa; line-height: 1.8;">
+                        <p><strong style="color: #fff;">Email</strong><br>info@xm2group.com.au</p>
+                        <p style="margin-top: 12px;"><strong style="color: #fff;">Phone</strong><br>+61 2 9000 1234</p>
+                        <p style="margin-top: 12px;"><strong style="color: #fff;">Location</strong><br>Sydney, Australia</p>
+                        <p style="margin-top: 12px;"><strong style="color: #fff;">Website</strong><br><a href="index.html" style="color: var(--papaya-orange); text-decoration: none;">xm2group.com.au</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">DPH</div>
+                    <div class="logo-text">DRONE PRO <span>HUB</span></div>
+                </div>
+                <p>The global network for professional aerial cinematographers. Find pilots, learn from the best, and grow your career.</p>
+                <div class="footer-social">
+                    <a href="#" title="YouTube">▶</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="TikTok">♪</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Find Pilots</h4>
+                <a href="index.html">Search Directory</a>
+                <a href="companies.html">Browse Companies</a>
+                <a href="index.html">Post a Job</a>
+                <a href="index.html">Producer Guide</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>For Pilots</h4>
+                <a href="index.html">Get Listed Free</a>
+                <a href="index.html">Courses</a>
+                <a href="index.html">Community</a>
+                <a href="index.html">1-on-1 Mentoring</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="index.html">Mates Rates</a>
+                <a href="index.html">Speed Registry</a>
+                <a href="index.html">Blog</a>
+                <a href="index.html">Newsletter</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Company</h4>
+                <a href="index.html">About Us</a>
+                <a href="index.html">Aidan Kelly</a>
+                <a href="index.html">Ben Biggs</a>
+                <a href="index.html">Contact</a>
+                <a href="index.html">Partner With Us</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2026 DronePro Hub. All rights reserved.</div>
+            <div>
+                <a href="index.html">Privacy Policy</a> ·
+                <a href="index.html">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function toggleSubmenu(item) {
+            item.classList.toggle('expanded');
+        }
+    </script>
+
+</body>
+</html>

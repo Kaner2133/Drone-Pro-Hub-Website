@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Speed Drone - Limited Edition - DronePro Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --papaya-orange: #FF8000;
+            --phantom-black: #1A1A1A;
+            --dark-grey: #333333;
+            --mid-grey: #666666;
+            --light-grey: #F5F5F5;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--phantom-black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ===================== NAVIGATION ===================== */
+        .nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--papaya-orange);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            color: var(--phantom-black);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: 1px;
+            color: var(--white);
+        }
+
+        .logo-text span {
+            color: var(--papaya-orange);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-link svg {
+            width: 12px;
+            height: 12px;
+            transition: transform 0.2s;
+        }
+
+        .nav-item:hover .nav-link svg {
+            transform: rotate(180deg);
+        }
+
+        .dropdown {
+            position: absolute;
+            top: calc(100% + 8px);
+            left: 0;
+            background: #252525;
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.2s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 20px;
+            font-size: 14px;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .dropdown-item:hover {
+            background: #333;
+            color: var(--white);
+        }
+
+        .badge {
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 4px;
+            background: rgba(255, 128, 0, 0.2);
+            color: var(--papaya-orange);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: #333;
+            margin: 8px 0;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .nav-login {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .nav-login:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-cta:hover {
+            background: #ff9933;
+            transform: translateY(-1px);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        @media (max-width: 1024px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: block; }
+        }
+
+        /* ===================== HERO SECTION ===================== */
+        .hero {
+            position: relative;
+            min-height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23ffffff08" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background-size: 40px 40px;
+        }
+
+        .hero-glow {
+            position: absolute;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.25) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 1200px;
+            width: 100%;
+            z-index: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        .hero-text h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(40px, 8vw, 72px);
+            font-weight: 900;
+            line-height: 1.05;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+
+        .hero-text h1 span {
+            color: var(--papaya-orange);
+        }
+
+        .hero-badge-limited {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(90deg, rgba(239, 68, 68, 0.2) 0%, rgba(255, 128, 0, 0.2) 100%);
+            border: 1px solid rgba(255, 128, 0, 0.4);
+            padding: 12px 20px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--papaya-orange);
+            margin-bottom: 24px;
+            width: fit-content;
+        }
+
+        .hero-record {
+            font-size: 20px;
+            color: #888;
+            margin-bottom: 48px;
+        }
+
+        .hero-record strong {
+            color: var(--papaya-orange);
+            font-size: 28px;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 200px;
+            overflow: hidden;
+        }
+
+        /* ===================== SECTIONS ===================== */
+        .section {
+            padding: 100px 24px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 900px) {
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .specs-grid { grid-template-columns: 1fr; }
+        }
+
+        .spec-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .spec-card:hover {
+            border-color: var(--papaya-orange);
+        }
+
+        .spec-label {
+            font-size: 12px;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .spec-value {
+            font-size: 28px;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--white);
+            line-height: 1.1;
+        }
+
+        .pricing-section {
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.15) 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin-bottom: 60px;
+            text-align: center;
+        }
+
+        .pricing-section h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 40px;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        @media (max-width: 600px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+        }
+
+        .price-option {
+            background: #252525;
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .price-label {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .price-amount {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--papaya-orange);
+            margin-bottom: 16px;
+        }
+
+        .price-desc {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 0;
+        }
+
+        .reserve-box {
+            background: rgba(255, 128, 0, 0.1);
+            border: 2px solid var(--papaya-orange);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .reserve-box h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .reserve-box p {
+            font-size: 16px;
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+
+        .reserve-box strong {
+            color: var(--papaya-orange);
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 18px;
+            font-weight: 700;
+            padding: 20px 48px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #ff9933;
+            transform: translateY(-2px);
+        }
+
+        .availability {
+            font-size: 14px;
+            color: #aaa;
+            margin-top: 40px;
+        }
+
+        .availability strong {
+            color: var(--papaya-orange);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 320px;
+            background: #1a1a1a;
+            z-index: 2000;
+            padding: 24px;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        .mobile-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .mobile-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-nav-item {
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        .mobile-nav-link svg {
+            color: #666;
+            transition: transform 0.2s;
+        }
+
+        .mobile-nav-item.expanded .mobile-nav-link svg {
+            transform: rotate(90deg);
+        }
+
+        .mobile-subnav {
+            display: none;
+            padding-bottom: 16px;
+        }
+
+        .mobile-nav-item.expanded .mobile-subnav {
+            display: block;
+        }
+
+        .mobile-subnav a {
+            display: block;
+            padding: 10px 0 10px 16px;
+            font-size: 14px;
+            color: #888;
+            text-decoration: none;
+            border-left: 2px solid #333;
+        }
+
+        .mobile-subnav a:hover {
+            color: var(--white);
+            border-left-color: var(--papaya-orange);
+        }
+
+        .mobile-cta {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 24px;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-menu,
+            .mobile-overlay {
+                display: block;
+            }
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #0d0d0d;
+            border-top: 1px solid #2a2a2a;
+            padding: 80px 24px 40px;
+        }
+
+        .footer-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: #666;
+            margin: 16px 0 24px;
+            max-width: 300px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: #1a1a1a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .footer-social a:hover {
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 14px;
+            color: #666;
+            text-decoration: none;
+            padding: 8px 0;
+            transition: color 0.2s;
+        }
+
+        .footer-column a:hover {
+            color: var(--papaya-orange);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 60px auto 0;
+            padding-top: 40px;
+            border-top: 1px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+        }
+
+        .footer-bottom a {
+            color: #666;
+            text-decoration: none;
+        }
+
+        .footer-bottom a:hover {
+            color: var(--papaya-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="homepage-prototype.html" class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </a>
+
+            <div class="nav-links">
+                <div class="nav-item">
+                    <a href="gear.html" class="nav-link">
+                        Gear
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </a>
+                    <div class="dropdown">
+                        <a href="gear-mates-rates.html" class="dropdown-item">Aidan's Mates Rates</a>
+                        <a href="gear-drones.html" class="dropdown-item">Drone Reviews</a>
+                        <a href="speed-drone.html" class="dropdown-item">Speed Drone (LIMITED)</a>
+                        <a href="deals.html" class="dropdown-item">Current Deals</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <a href="#" class="nav-cta">Pilots — Get Listed Free</a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M3 12h18M3 6h18M3 18h18"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </div>
+            <button class="mobile-close" onclick="toggleMobileMenu()">×</button>
+        </div>
+
+        <div class="mobile-nav-item" onclick="toggleSubmenu(this)">
+            <a href="#" class="mobile-nav-link" onclick="event.preventDefault()">
+                Gear
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+            </a>
+            <div class="mobile-subnav">
+                <a href="gear-mates-rates.html">Aidan's Mates Rates</a>
+                <a href="gear-drones.html">Drone Reviews</a>
+                <a href="speed-drone.html" style="color: var(--papaya-orange);">⚡ Speed Drone — Limited</a>
+                <a href="deals.html">Current Deals</a>
+            </div>
+        </div>
+
+        <a href="#" class="mobile-cta">Pilots — Get Listed Free</a>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="hero-glow"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge-limited">
+                    <span>⚡</span> LIMITED EDITION
+                </div>
+                <h1>The Speed <span>Drone</span></h1>
+                <div class="hero-record">
+                    <strong>661 km/h</strong>
+                    World Speed Record Holder
+                </div>
+            </div>
+            <div class="hero-image">⚡</div>
+        </div>
+    </section>
+
+    <!-- Specifications -->
+    <section class="section">
+        <div class="container">
+            <div class="specs-grid">
+                <div class="spec-card">
+                    <div class="spec-label">Max Speed</div>
+                    <div class="spec-value">661<br>km/h</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-label">0-100 km/h</div>
+                    <div class="spec-value">5<br>seconds</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-label">Flight Time</div>
+                    <div class="spec-value">8-12<br>minutes</div>
+                </div>
+                <div class="spec-card">
+                    <div class="spec-label">Weight</div>
+                    <div class="spec-value">2.8<br>kg</div>
+                </div>
+            </div>
+
+            <!-- Pricing & Reservation -->
+            <div class="pricing-section">
+                <h2>Own The Record</h2>
+
+                <div class="pricing-grid">
+                    <div class="price-option">
+                        <div class="price-label">Base Package</div>
+                        <div class="price-amount">$16,500</div>
+                        <div class="price-desc">Custom frame, electronics, and motor components. Build with your own camera system.</div>
+                    </div>
+                    <div class="price-option">
+                        <div class="price-label">Ready-To-Fly Package</div>
+                        <div class="price-amount">$21,500</div>
+                        <div class="price-desc">Complete build with integrated HD camera, transmitter, and battery system. Fly out of the box.</div>
+                    </div>
+                </div>
+
+                <div class="reserve-box">
+                    <h3>Secure Your Unit</h3>
+                    <p><strong>$5,000 USD deposit</strong> to reserve your Speed Drone</p>
+                    <p>Only 5-10 units available worldwide. Limited production run.</p>
+                    <p>Expected delivery: Q2 2026</p>
+                </div>
+
+                <a href="#" class="btn-primary">
+                    Reserve Your Speed Drone
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+
+                <div class="availability">
+                    <strong>⚡ Only 5-10 units available.</strong> First come, first served.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    <div class="logo-icon">DPH</div>
+                    <div class="logo-text">DRONE PRO <span>HUB</span></div>
+                </div>
+                <p>The global network for professional aerial cinematographers. Find pilots, learn from the best, and grow your career.</p>
+                <div class="footer-social">
+                    <a href="#" title="YouTube">▶</a>
+                    <a href="#" title="Instagram">📷</a>
+                    <a href="#" title="LinkedIn">in</a>
+                    <a href="#" title="TikTok">♪</a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Gear & Reviews</h4>
+                <a href="gear.html">Gear Hub</a>
+                <a href="gear-drones.html">Drone Reviews</a>
+                <a href="gear-mates-rates.html">Mates Rates</a>
+                <a href="deals.html">Current Deals</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Featured</h4>
+                <a href="speed-drone.html">Speed Drone</a>
+                <a href="#">FPV Builds</a>
+                <a href="#">Camera Reviews</a>
+                <a href="#">Accessories</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Community</h4>
+                <a href="#">Join Community</a>
+                <a href="#">Pilot Network</a>
+                <a href="#">Learning Hub</a>
+                <a href="#">Newsletter</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Company</h4>
+                <a href="#">About Us</a>
+                <a href="#">Contact</a>
+                <a href="#">Partner With Us</a>
+                <a href="#">Privacy Policy</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2026 DronePro Hub. All rights reserved.</div>
+            <div>
+                <a href="#">Privacy Policy</a> ·
+                <a href="#">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileOverlay');
+            menu.classList.toggle('open');
+            overlay.classList.toggle('open');
+        }
+
+        function toggleSubmenu(item) {
+            item.classList.toggle('expanded');
+        }
+    </script>
+
+</body>
+</html>
