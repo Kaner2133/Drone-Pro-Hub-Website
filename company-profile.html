@@ -334,6 +334,29 @@
             font-size: 48px;
             font-weight: 900;
             margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.2) 0%, rgba(255, 128, 0, 0.1) 100%);
+            border: 1px solid var(--papaya-orange);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .verified-badge svg {
+            width: 14px;
+            height: 14px;
         }
 
         .company-tagline-large {
@@ -1225,7 +1248,7 @@
         <div class="company-header-content">
             <div class="company-logo-large">🎥</div>
             <div class="company-header-info">
-                <h1>XM2 Group</h1>
+                <h1>XM2 Group <span class="verified-badge"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg> Verified</span></h1>
                 <div class="company-tagline-large">Heavy Lift Specialists</div>
                 <div class="company-header-meta">
                     <div class="meta-item">
@@ -1261,6 +1284,28 @@
                         <p>XM2 Group is a world-class heavy lift drone cinematography company based in Sydney, Australia. Founded in 2015, we've established ourselves as the go-to specialists for premium aerial cinematography on high-budget productions, including multiple Hollywood blockbusters.</p>
                         <p>With over 18 years of combined aerial experience and 12 heavy-lift aircraft, we deliver broadcast-quality imagery from the sky. Our team understands production workflows and delivers on tight timelines with professional crews.</p>
                         <p>From feature films to commercials, we've worked with major studios and production companies worldwide, pioneering new approaches to heavy-lift cinematography and motion control systems.</p>
+                    </div>
+                </div>
+
+                <!-- Showreel Section -->
+                <div class="profile-section">
+                    <h2 class="section-title">Company <span>Showreel</span></h2>
+                    <div style="background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 16px; overflow: hidden;">
+                        <div style="aspect-ratio: 16/9; background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;">
+                            <div style="width: 80px; height: 80px; background: rgba(255, 128, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s;">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--papaya-orange)"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <p style="color: #888; font-size: 14px;">Click to play showreel</p>
+                        </div>
+                        <div style="padding: 20px; border-top: 1px solid #2a2a2a;">
+                            <div style="display: flex; justify-content: space-between; align-items: center;">
+                                <div>
+                                    <p style="font-weight: 600; margin-bottom: 4px;">XM2 Group 2024 Showreel</p>
+                                    <p style="color: #888; font-size: 13px;">3:42 • Featuring work from Mission Impossible, John Wick, and more</p>
+                                </div>
+                                <a href="#" style="color: var(--papaya-orange); font-size: 13px; text-decoration: none;">View on Vimeo →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -1316,95 +1361,169 @@
 
                 <!-- Team Section -->
                 <div class="profile-section">
-                    <h2 class="section-title">Attached <span>Pilots</span></h2>
+                    <h2 class="section-title">Team <span>Members</span></h2>
+                    <p class="section-desc">All team members are verified DronePro Hub pilots with linked profiles.</p>
                     <div class="team-grid">
-                        <div class="team-member">
+                        <a href="pilot-profile.html" class="team-member" style="text-decoration: none; color: inherit;">
                             <div class="team-avatar">👨</div>
                             <h4>Marcus Chen</h4>
-                            <div class="team-role">Head Pilot</div>
-                            <a href="index.html" class="team-link">View Profile →</a>
-                        </div>
-                        <div class="team-member">
+                            <div class="team-role">Lead Pilot / Director of Operations</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 8px;">
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">Heavy Lift</span>
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">Inspire 3</span>
+                            </div>
+                            <span class="team-link" style="margin-top: 12px; display: inline-block;">View Full Profile →</span>
+                        </a>
+                        <a href="pilot-profile.html" class="team-member" style="text-decoration: none; color: inherit;">
                             <div class="team-avatar">👩</div>
                             <h4>Sarah Okonjo</h4>
-                            <div class="team-role">Senior Operator</div>
-                            <a href="index.html" class="team-link">View Profile →</a>
-                        </div>
-                        <div class="team-member">
+                            <div class="team-role">Senior Camera Operator</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 8px;">
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">FPV</span>
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">Cinelifter</span>
+                            </div>
+                            <span class="team-link" style="margin-top: 12px; display: inline-block;">View Full Profile →</span>
+                        </a>
+                        <a href="pilot-profile.html" class="team-member" style="text-decoration: none; color: inherit;">
                             <div class="team-avatar">👨</div>
                             <h4>James Miller</h4>
-                            <div class="team-role">Flight Ops Manager</div>
-                            <a href="index.html" class="team-link">View Profile →</a>
-                        </div>
-                        <div class="team-member">
+                            <div class="team-role">Flight Operations Manager</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 8px;">
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">Safety</span>
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">Logistics</span>
+                            </div>
+                            <span class="team-link" style="margin-top: 12px; display: inline-block;">View Full Profile →</span>
+                        </a>
+                        <a href="pilot-profile.html" class="team-member" style="text-decoration: none; color: inherit;">
                             <div class="team-avatar">👩</div>
                             <h4>Elena Volkov</h4>
-                            <div class="team-role">VFX Specialist</div>
-                            <a href="index.html" class="team-link">View Profile →</a>
-                        </div>
+                            <div class="team-role">VFX Supervisor / Pilot</div>
+                            <div style="display: flex; flex-wrap: wrap; gap: 4px; justify-content: center; margin-top: 8px;">
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">VFX</span>
+                                <span style="background: rgba(255, 128, 0, 0.15); color: var(--papaya-orange); font-size: 10px; padding: 3px 8px; border-radius: 4px;">LiDAR</span>
+                            </div>
+                            <span class="team-link" style="margin-top: 12px; display: inline-block;">View Full Profile →</span>
+                        </a>
+                    </div>
+                    <div style="text-align: center; margin-top: 24px;">
+                        <a href="index.html" style="color: var(--papaya-orange); font-size: 14px; text-decoration: none;">View all 18 team members →</a>
                     </div>
                 </div>
 
-                <!-- Portfolio Section -->
+                <!-- Notable Work Section -->
                 <div class="profile-section">
-                    <h2 class="section-title">Case Studies & <span>Portfolio</span></h2>
+                    <h2 class="section-title">Notable <span>Credits</span></h2>
+                    <p class="section-desc">Selected work from major productions. Full filmography available on request.</p>
                     <div class="portfolio-grid">
                         <div class="portfolio-item">
                             <div class="portfolio-image">🎬</div>
                             <div class="portfolio-info">
-                                <div class="portfolio-title">Hollywood Blockbuster</div>
-                                <div class="portfolio-type">Feature Film</div>
+                                <div class="portfolio-title">Mission: Impossible - Dead Reckoning</div>
+                                <div class="portfolio-type">Feature Film • 2023 • Aerial Unit</div>
+                            </div>
+                        </div>
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">🎬</div>
+                            <div class="portfolio-info">
+                                <div class="portfolio-title">John Wick: Chapter 4</div>
+                                <div class="portfolio-type">Feature Film • 2023 • Heavy Lift</div>
                             </div>
                         </div>
                         <div class="portfolio-item">
                             <div class="portfolio-image">📺</div>
                             <div class="portfolio-info">
-                                <div class="portfolio-title">Prime Time Series</div>
-                                <div class="portfolio-type">Television</div>
-                            </div>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">🎵</div>
-                            <div class="portfolio-info">
-                                <div class="portfolio-title">Chart-Topping Music Video</div>
-                                <div class="portfolio-type">Music Video</div>
+                                <div class="portfolio-title">House of the Dragon</div>
+                                <div class="portfolio-type">Television • HBO • VFX Plates</div>
                             </div>
                         </div>
                         <div class="portfolio-item">
                             <div class="portfolio-image">🏢</div>
                             <div class="portfolio-info">
-                                <div class="portfolio-title">Global Brand Campaign</div>
-                                <div class="portfolio-type">Commercial</div>
+                                <div class="portfolio-title">Apple "Shot on iPhone" Campaign</div>
+                                <div class="portfolio-type">Commercial • 2024 • Worldwide</div>
                             </div>
                         </div>
+                    </div>
+                    <div style="margin-top: 24px; background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 12px; padding: 20px;">
+                        <h4 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Additional Credits Include:</h4>
+                        <p style="font-size: 13px; color: #888; line-height: 1.8;">Thor: Love and Thunder, The Matrix Resurrections, Aquaman 2, Top Gun: Maverick, various Netflix and Amazon originals, and commercial work for Mercedes-Benz, Nike, Samsung, and more.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Right Sidebar -->
             <div class="sidebar">
+                <!-- Availability Status -->
+                <div class="sidebar-card" style="background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, #1a1a1a 100%); border-color: rgba(34, 197, 94, 0.3);">
+                    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                        <div style="width: 12px; height: 12px; background: #22c55e; border-radius: 50%; animation: pulse 2s infinite;"></div>
+                        <h3 class="sidebar-title" style="margin: 0; color: #22c55e;">Available Now</h3>
+                    </div>
+                    <p style="font-size: 13px; color: #aaa; margin-bottom: 16px;">Currently accepting bookings for Q1 2026</p>
+                    <div style="display: flex; gap: 8px;">
+                        <span style="background: rgba(34, 197, 94, 0.2); color: #22c55e; font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 600;">Short Notice OK</span>
+                        <span style="background: rgba(255, 128, 0, 0.2); color: var(--papaya-orange); font-size: 11px; padding: 4px 10px; border-radius: 4px; font-weight: 600;">Worldwide</span>
+                    </div>
+                </div>
+                <style>
+                    @keyframes pulse {
+                        0%, 100% { opacity: 1; }
+                        50% { opacity: 0.5; }
+                    }
+                </style>
+
                 <!-- Quick Stats -->
                 <div class="sidebar-card">
-                    <h3 class="sidebar-title">Company Info</h3>
+                    <h3 class="sidebar-title">Company Details</h3>
                     <div class="sidebar-item">
-                        <span class="sidebar-label">Fleet Size</span>
-                        <span class="sidebar-value">12 Aircraft</span>
+                        <span class="sidebar-label">Established</span>
+                        <span class="sidebar-value">2015 (10 years)</span>
                     </div>
                     <div class="sidebar-item">
                         <span class="sidebar-label">Team Size</span>
                         <span class="sidebar-value">18 Professionals</span>
                     </div>
                     <div class="sidebar-item">
-                        <span class="sidebar-label">Founded</span>
-                        <span class="sidebar-value">2015</span>
+                        <span class="sidebar-label">Languages</span>
+                        <span class="sidebar-value">English, Mandarin</span>
                     </div>
                     <div class="sidebar-item">
-                        <span class="sidebar-label">Certification</span>
-                        <span class="sidebar-value">FAA Part 107</span>
+                        <span class="sidebar-label">Response Time</span>
+                        <span class="sidebar-value">Within 24 hours</span>
+                    </div>
+                </div>
+
+                <!-- Insurance & Licensing -->
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Insurance & Licensing</h3>
+                    <div style="margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            <span style="color: #22c55e; font-size: 13px; font-weight: 600;">Fully Insured & Licensed</span>
+                        </div>
+                    </div>
+
+                    <div style="font-size: 12px; text-transform: uppercase; color: #666; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 12px;">Insurance Coverage</div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Public Liability</span>
+                        <span class="sidebar-value">$20M AUD</span>
                     </div>
                     <div class="sidebar-item">
-                        <span class="sidebar-label">Insurance</span>
-                        <span class="sidebar-value">$5M Coverage</span>
+                        <span class="sidebar-label">Aviation Liability</span>
+                        <span class="sidebar-value">$10M AUD</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-label">Equipment</span>
+                        <span class="sidebar-value">$500K AUD</span>
+                    </div>
+
+                    <div style="font-size: 12px; text-transform: uppercase; color: #666; font-weight: 600; letter-spacing: 0.5px; margin: 20px 0 12px;">Certifications</div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                        <span style="background: rgba(255, 128, 0, 0.15); border: 1px solid rgba(255, 128, 0, 0.3); color: var(--papaya-orange); font-size: 11px; padding: 6px 10px; border-radius: 6px; font-weight: 600;">CASA ReOC</span>
+                        <span style="background: rgba(255, 128, 0, 0.15); border: 1px solid rgba(255, 128, 0, 0.3); color: var(--papaya-orange); font-size: 11px; padding: 6px 10px; border-radius: 6px; font-weight: 600;">FAA Part 107</span>
+                        <span style="background: rgba(255, 128, 0, 0.15); border: 1px solid rgba(255, 128, 0, 0.3); color: var(--papaya-orange); font-size: 11px; padding: 6px 10px; border-radius: 6px; font-weight: 600;">CAA UK</span>
+                        <span style="background: rgba(255, 128, 0, 0.15); border: 1px solid rgba(255, 128, 0, 0.3); color: var(--papaya-orange); font-size: 11px; padding: 6px 10px; border-radius: 6px; font-weight: 600;">EASA A1/A3</span>
+                        <span style="background: rgba(255, 128, 0, 0.15); border: 1px solid rgba(255, 128, 0, 0.3); color: var(--papaya-orange); font-size: 11px; padding: 6px 10px; border-radius: 6px; font-weight: 600;">NZ CAA Part 102</span>
                     </div>
                 </div>
 

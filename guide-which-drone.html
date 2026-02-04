@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Which Drone Do I Need? - Producer's Guide | Drone Pro Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --papaya-orange: #FF8000;
+            --phantom-black: #1A1A1A;
+            --dark-grey: #333333;
+            --mid-grey: #666666;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--phantom-black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+        .nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--papaya-orange);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            color: var(--phantom-black);
+        }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--white);
+        }
+        .logo-text span { color: var(--papaya-orange); }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-cta {
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 24px 0;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .breadcrumb a:hover { color: var(--papaya-orange); }
+        .breadcrumb span { color: #666; font-size: 14px; }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: 60px 24px 80px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+        .hero-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--papaya-orange); }
+        .hero-sub {
+            font-size: 18px;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .section { padding: 80px 24px; }
+        .section-dark { background: #0d0d0d; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .section-title span { color: var(--papaya-orange); }
+
+        /* Quick Decision */
+        .quick-decision {
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.1) 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 60px;
+        }
+        .quick-decision h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--papaya-orange);
+        }
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        @media (max-width: 700px) {
+            .decision-grid { grid-template-columns: 1fr; }
+        }
+        .decision-item {
+            background: rgba(0,0,0,0.3);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--papaya-orange);
+        }
+        .decision-item h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--white);
+        }
+        .decision-item p {
+            font-size: 14px;
+            color: #888;
+        }
+        .decision-item .recommendation {
+            margin-top: 12px;
+            padding: 8px 12px;
+            background: rgba(255, 128, 0, 0.2);
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--papaya-orange);
+        }
+
+        /* Drone Cards */
+        .drone-card {
+            background: #1a1a1a;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid #333;
+        }
+        .drone-card:hover { border-color: var(--papaya-orange); }
+        .drone-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 32px;
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+        }
+        .drone-icon {
+            width: 80px;
+            height: 80px;
+            background: #333;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            flex-shrink: 0;
+        }
+        .drone-title h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .drone-title .tagline {
+            font-size: 14px;
+            color: var(--papaya-orange);
+            font-weight: 600;
+        }
+        .drone-body { padding: 32px; }
+        .drone-desc {
+            font-size: 16px;
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 32px;
+        }
+        .drone-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 32px;
+        }
+        @media (max-width: 700px) {
+            .drone-specs { grid-template-columns: 1fr; }
+        }
+        .spec-item {
+            background: #252525;
+            padding: 16px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .spec-item .label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .spec-item .value {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        .best-for {
+            margin-bottom: 24px;
+        }
+        .best-for h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .best-for-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .best-for-item {
+            background: rgba(255, 128, 0, 0.1);
+            color: #ccc;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        .not-ideal h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #f87171;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        .not-ideal-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .not-ideal-item {
+            background: rgba(248, 113, 113, 0.1);
+            color: #888;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 40px;
+        }
+        .comparison-table th {
+            background: #252525;
+            padding: 16px;
+            text-align: left;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--papaya-orange);
+        }
+        .comparison-table td {
+            padding: 16px;
+            font-size: 14px;
+            color: #aaa;
+            border-bottom: 1px solid #333;
+        }
+        .comparison-table tr:hover td { background: rgba(255, 128, 0, 0.05); }
+        .comparison-table .platform-name {
+            font-weight: 600;
+            color: var(--white);
+        }
+
+        /* CTA */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.1) 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .cta-box h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .cta-box h2 span { color: var(--papaya-orange); }
+        .cta-box p {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+        }
+        .btn-primary:hover { background: #ff9933; }
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: var(--white);
+            font-size: 16px;
+            font-weight: 600;
+            padding: 16px 32px;
+            border: 2px solid #333;
+            border-radius: 12px;
+            text-decoration: none;
+            margin-left: 16px;
+        }
+        .btn-secondary:hover { border-color: var(--papaya-orange); color: var(--papaya-orange); }
+
+        /* Footer */
+        .footer {
+            background: #0d0d0d;
+            border-top: 1px solid #2a2a2a;
+            padding: 60px 24px 40px;
+            margin-top: 80px;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+        .footer a { color: #666; text-decoration: none; }
+        .footer a:hover { color: var(--papaya-orange); }
+        @media (max-width: 600px) {
+            .footer-content { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </a>
+            <div class="nav-right">
+                <a href="guide.html" class="nav-link">Producer Guide</a>
+                <a href="pilots.html" class="nav-link">Find Pilots</a>
+                <a href="signup.html" class="nav-cta">Get Listed Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> <span> / </span>
+        <a href="guide.html">Producer Guide</a> <span> / </span>
+        <span style="color: var(--papaya-orange);">Which Drone</span>
+    </div>
+
+    <section class="hero">
+        <div class="hero-bg"><div class="hero-glow"></div></div>
+        <div class="hero-content">
+            <h1>Which <span>Drone</span> Do I Need?</h1>
+            <p class="hero-sub">Different shots require different platforms. This guide helps you understand which drone type is right for your production, from corporate videos to Hollywood blockbusters.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="quick-decision">
+                <h2>Quick Decision Guide</h2>
+                <div class="decision-grid">
+                    <div class="decision-item">
+                        <h4>Real Estate, Events, Social Content</h4>
+                        <p>Standard aerial shots, establishing shots, and general coverage work.</p>
+                        <div class="recommendation">→ DJI Mavic or Mini</div>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Broadcast TV, Commercials, Documentaries</h4>
+                        <p>Professional quality, larger sensors, interchangeable lenses.</p>
+                        <div class="recommendation">→ DJI Inspire 3</div>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Feature Films, High-End Commercials</h4>
+                        <p>Cinema cameras like RED, ARRI. Maximum image quality.</p>
+                        <div class="recommendation">→ Heavy Lift Platform</div>
+                    </div>
+                    <div class="decision-item">
+                        <h4>Action Sequences, Dynamic Movement</h4>
+                        <p>Fast-paced, immersive shots through tight spaces.</p>
+                        <div class="recommendation">→ FPV Drone</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-label">Platform Breakdown</div>
+            <h2 class="section-title">Understanding <span>Drone Platforms</span></h2>
+
+            <!-- DJI Mavic -->
+            <div class="drone-card">
+                <div class="drone-header">
+                    <div class="drone-icon">🚁</div>
+                    <div class="drone-title">
+                        <h3>DJI Mavic Series</h3>
+                        <div class="tagline">Entry Point for Professional Aerial</div>
+                    </div>
+                </div>
+                <div class="drone-body">
+                    <p class="drone-desc">The Mavic series (Mavic 3 Pro, Mavic 3 Cine) offers excellent image quality in a compact, portable package. Perfect for productions that need professional results without the complexity and cost of larger platforms. The Hasselblad camera delivers stunning 5.1K footage with impressive dynamic range.</p>
+
+                    <div class="drone-specs">
+                        <div class="spec-item">
+                            <div class="label">Sensor</div>
+                            <div class="value">4/3" CMOS</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Max Resolution</div>
+                            <div class="value">5.1K / 50fps</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Day Rate</div>
+                            <div class="value">$1,000 - $1,800</div>
+                        </div>
+                    </div>
+
+                    <div class="best-for">
+                        <h4>Best For</h4>
+                        <div class="best-for-grid">
+                            <span class="best-for-item">Real Estate</span>
+                            <span class="best-for-item">Corporate Videos</span>
+                            <span class="best-for-item">Events</span>
+                            <span class="best-for-item">Travel Content</span>
+                            <span class="best-for-item">Social Media</span>
+                            <span class="best-for-item">Wedding Films</span>
+                            <span class="best-for-item">News/Journalism</span>
+                        </div>
+                    </div>
+
+                    <div class="not-ideal">
+                        <h4>Not Ideal For</h4>
+                        <div class="not-ideal-grid">
+                            <span class="not-ideal-item">Feature Films</span>
+                            <span class="not-ideal-item">High-End Commercials</span>
+                            <span class="not-ideal-item">Cinema-Grade Color</span>
+                            <span class="not-ideal-item">Heavy Wind Conditions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DJI Inspire -->
+            <div class="drone-card">
+                <div class="drone-header">
+                    <div class="drone-icon">🎬</div>
+                    <div class="drone-title">
+                        <h3>DJI Inspire 3</h3>
+                        <div class="tagline">The Industry Standard for Broadcast</div>
+                    </div>
+                </div>
+                <div class="drone-body">
+                    <p class="drone-desc">The Inspire 3 is the workhorse of professional aerial cinematography. With a full-frame sensor, interchangeable lenses, and 8K ProRes RAW recording, it delivers broadcast and cinema-quality footage. The dual-operator capability allows separate control of flight and camera for precision shots.</p>
+
+                    <div class="drone-specs">
+                        <div class="spec-item">
+                            <div class="label">Sensor</div>
+                            <div class="value">Full Frame</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Max Resolution</div>
+                            <div class="value">8K / 25fps</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Day Rate</div>
+                            <div class="value">$2,000 - $3,500</div>
+                        </div>
+                    </div>
+
+                    <div class="best-for">
+                        <h4>Best For</h4>
+                        <div class="best-for-grid">
+                            <span class="best-for-item">Broadcast Television</span>
+                            <span class="best-for-item">Commercials</span>
+                            <span class="best-for-item">Documentaries</span>
+                            <span class="best-for-item">Music Videos</span>
+                            <span class="best-for-item">Sports Coverage</span>
+                            <span class="best-for-item">Automotive</span>
+                            <span class="best-for-item">Premium Corporate</span>
+                        </div>
+                    </div>
+
+                    <div class="not-ideal">
+                        <h4>Not Ideal For</h4>
+                        <div class="not-ideal-grid">
+                            <span class="not-ideal-item">Tight Indoor Spaces</span>
+                            <span class="not-ideal-item">Run-and-Gun</span>
+                            <span class="not-ideal-item">Budget Productions</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Heavy Lift -->
+            <div class="drone-card">
+                <div class="drone-header">
+                    <div class="drone-icon">🎥</div>
+                    <div class="drone-title">
+                        <h3>Heavy Lift Platforms</h3>
+                        <div class="tagline">Cinema Cameras in the Sky</div>
+                    </div>
+                </div>
+                <div class="drone-body">
+                    <p class="drone-desc">Heavy lift drones like the Freefly Alta X or custom builds can carry cinema cameras including RED Komodo, ARRI Alexa Mini, and Sony Venice. These platforms deliver identical image quality to your ground camera package, ensuring seamless integration in high-end productions.</p>
+
+                    <div class="drone-specs">
+                        <div class="spec-item">
+                            <div class="label">Payload</div>
+                            <div class="value">Up to 15kg</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Cameras</div>
+                            <div class="value">RED, ARRI, Sony</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Day Rate</div>
+                            <div class="value">$3,500 - $8,000+</div>
+                        </div>
+                    </div>
+
+                    <div class="best-for">
+                        <h4>Best For</h4>
+                        <div class="best-for-grid">
+                            <span class="best-for-item">Feature Films</span>
+                            <span class="best-for-item">Netflix/Streaming Originals</span>
+                            <span class="best-for-item">Super Bowl Commercials</span>
+                            <span class="best-for-item">Camera Matching</span>
+                            <span class="best-for-item">Theatrical Release</span>
+                        </div>
+                    </div>
+
+                    <div class="not-ideal">
+                        <h4>Not Ideal For</h4>
+                        <div class="not-ideal-grid">
+                            <span class="not-ideal-item">Quick Turnaround</span>
+                            <span class="not-ideal-item">Limited Budgets</span>
+                            <span class="not-ideal-item">Tight Locations</span>
+                            <span class="not-ideal-item">Run-and-Gun</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FPV -->
+            <div class="drone-card">
+                <div class="drone-header">
+                    <div class="drone-icon">⚡</div>
+                    <div class="drone-title">
+                        <h3>FPV Drones</h3>
+                        <div class="tagline">Immersive, Dynamic Movement</div>
+                    </div>
+                </div>
+                <div class="drone-body">
+                    <p class="drone-desc">FPV (First Person View) drones create shots that were previously impossible. Flying through tight spaces, following action at high speed, and creating immersive one-take sequences. From cinematic 5" builds with GoPros to larger rigs carrying RED cameras, FPV has revolutionized action cinematography.</p>
+
+                    <div class="drone-specs">
+                        <div class="spec-item">
+                            <div class="label">Speed</div>
+                            <div class="value">Up to 200+ km/h</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Cameras</div>
+                            <div class="value">GoPro to RED</div>
+                        </div>
+                        <div class="spec-item">
+                            <div class="label">Day Rate</div>
+                            <div class="value">$2,500 - $5,000+</div>
+                        </div>
+                    </div>
+
+                    <div class="best-for">
+                        <h4>Best For</h4>
+                        <div class="best-for-grid">
+                            <span class="best-for-item">Action Sequences</span>
+                            <span class="best-for-item">Car Chases</span>
+                            <span class="best-for-item">Sports</span>
+                            <span class="best-for-item">Music Videos</span>
+                            <span class="best-for-item">One-Take Sequences</span>
+                            <span class="best-for-item">Interior Fly-Throughs</span>
+                            <span class="best-for-item">Extreme Sports</span>
+                        </div>
+                    </div>
+
+                    <div class="not-ideal">
+                        <h4>Not Ideal For</h4>
+                        <div class="not-ideal-grid">
+                            <span class="not-ideal-item">Static Establishing Shots</span>
+                            <span class="not-ideal-item">Slow, Controlled Movement</span>
+                            <span class="not-ideal-item">Long Flight Times</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <h3 style="font-size: 20px; font-weight: 700; margin-top: 60px; margin-bottom: 24px;">Quick Comparison</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Platform</th>
+                        <th>Image Quality</th>
+                        <th>Portability</th>
+                        <th>Day Rate</th>
+                        <th>Setup Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="platform-name">DJI Mavic</td>
+                        <td>Very Good</td>
+                        <td>Excellent</td>
+                        <td>$1,000 - $1,800</td>
+                        <td>5-10 min</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">DJI Inspire 3</td>
+                        <td>Excellent</td>
+                        <td>Good</td>
+                        <td>$2,000 - $3,500</td>
+                        <td>15-20 min</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">Heavy Lift</td>
+                        <td>Cinema-Grade</td>
+                        <td>Limited</td>
+                        <td>$3,500 - $8,000+</td>
+                        <td>30-45 min</td>
+                    </tr>
+                    <tr>
+                        <td class="platform-name">FPV</td>
+                        <td>Good to Excellent</td>
+                        <td>Good</td>
+                        <td>$2,500 - $5,000+</td>
+                        <td>15-30 min</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="cta-box">
+                <h2>Still Not Sure? <span>Talk to an Expert</span></h2>
+                <p>Book a free consultation with our team to discuss your specific production needs and get personalized recommendations.</p>
+                <a href="sessions-aidan.html" class="btn-primary">Book a Consultation</a>
+                <a href="guide-platforms.html" class="btn-secondary">Deep Dive: Platform Guides</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>© 2026 Drone Pro Hub. All rights reserved.</div>
+            <div>
+                <a href="guide.html">Back to Producer Guide</a> ·
+                <a href="pilots.html">Find Pilots</a> ·
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -345,21 +345,14 @@
         }
 
         .hero-container {
-            max-width: 1400px;
+            max-width: 900px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             position: relative;
             z-index: 1;
-        }
-
-        @media (max-width: 900px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
         }
 
         .hero-content h1 {
@@ -983,7 +976,6 @@
                 <p class="hero-sub">Learn FPV builds, speed flying, and drone engineering from the world record holder for fastest drone. Master optimization techniques and extreme flight cinematography.</p>
                 <button class="btn-primary">Schedule a Session</button>
             </div>
-            <div class="hero-photo">⚡</div>
         </div>
     </section>
 
@@ -1026,7 +1018,7 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-duration">30 Minutes</div>
-                    <div class="pricing-amount">$150</div>
+                    <div class="pricing-amount">$90</div>
                     <p class="pricing-desc">Quick consultation</p>
                     <ul class="pricing-features">
                         <li>✓ Technical questions</li>
@@ -1038,7 +1030,7 @@
 
                 <div class="pricing-card featured">
                     <div class="pricing-duration">60 Minutes</div>
-                    <div class="pricing-amount">$350</div>
+                    <div class="pricing-amount">$180</div>
                     <p class="pricing-desc">Most popular</p>
                     <ul class="pricing-features">
                         <li>✓ Deep technical dive</li>
@@ -1051,7 +1043,7 @@
 
                 <div class="pricing-card">
                     <div class="pricing-duration">90 Minutes</div>
-                    <div class="pricing-amount">$480</div>
+                    <div class="pricing-amount">$250</div>
                     <p class="pricing-desc">Intensive coaching</p>
                     <ul class="pricing-features">
                         <li>✓ Full build review</li>

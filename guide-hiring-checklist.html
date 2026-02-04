@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Pilot Hiring Checklist - Producer's Guide | Drone Pro Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --papaya-orange: #FF8000;
+            --phantom-black: #1A1A1A;
+            --dark-grey: #333333;
+            --mid-grey: #666666;
+            --white: #FFFFFF;
+            --green: #22c55e;
+            --red: #ef4444;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--phantom-black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+        .nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--papaya-orange);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            color: var(--phantom-black);
+        }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--white);
+        }
+        .logo-text span { color: var(--papaya-orange); }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+        .nav-link:hover {
+            color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .nav-cta {
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 24px 0;
+        }
+        .breadcrumb a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .breadcrumb a:hover { color: var(--papaya-orange); }
+        .breadcrumb span { color: #666; font-size: 14px; }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: 60px 24px 80px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+        .hero-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--papaya-orange); }
+        .hero-sub {
+            font-size: 18px;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Sections */
+        .section { padding: 80px 24px; }
+        .section-dark { background: #0d0d0d; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .section-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 4vw, 40px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .section-title span { color: var(--papaya-orange); }
+
+        /* Checklist Categories */
+        .checklist-category {
+            background: #1a1a1a;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .category-header {
+            background: linear-gradient(135deg, #252525 0%, #1a1a1a 100%);
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            border-bottom: 1px solid #333;
+        }
+        .category-number {
+            width: 48px;
+            height: 48px;
+            background: var(--papaya-orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 20px;
+            color: var(--phantom-black);
+        }
+        .category-title h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .category-title p {
+            font-size: 14px;
+            color: #888;
+        }
+        .category-body { padding: 24px 32px; }
+
+        /* Checklist Items */
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        .checklist-item:last-child { border-bottom: none; }
+        .check-box {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #444;
+            border-radius: 6px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .check-content h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .check-content p {
+            font-size: 14px;
+            color: #888;
+            line-height: 1.6;
+        }
+        .check-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-left: 8px;
+        }
+        .badge-required {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--red);
+        }
+        .badge-recommended {
+            background: rgba(255, 128, 0, 0.2);
+            color: var(--papaya-orange);
+        }
+        .badge-optional {
+            background: rgba(34, 197, 94, 0.2);
+            color: var(--green);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        .warning-box h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .warning-box p {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: rgba(255, 128, 0, 0.1);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 32px 0;
+        }
+        .tip-box h4 {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tip-box p {
+            font-size: 14px;
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        /* Questions to Ask */
+        .questions-section {
+            background: #252525;
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 40px;
+        }
+        .questions-section h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--papaya-orange);
+        }
+        .question-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid #333;
+        }
+        .question-item:last-child { border-bottom: none; }
+        .q-icon {
+            color: var(--papaya-orange);
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .question-item p {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* Red Flags */
+        .red-flags {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+        @media (max-width: 700px) {
+            .red-flags { grid-template-columns: 1fr; }
+        }
+        .red-flag-item {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 4px solid var(--red);
+            padding: 16px;
+            border-radius: 8px;
+        }
+        .red-flag-item h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--red);
+            margin-bottom: 6px;
+        }
+        .red-flag-item p {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.1) 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 60px;
+        }
+        .cta-box h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .cta-box h2 span { color: var(--papaya-orange); }
+        .cta-box p {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 32px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+        }
+        .btn-primary:hover { background: #ff9933; }
+
+        /* Footer */
+        .footer {
+            background: #0d0d0d;
+            border-top: 1px solid #2a2a2a;
+            padding: 60px 24px 40px;
+            margin-top: 80px;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #666;
+        }
+        .footer a { color: #666; text-decoration: none; }
+        .footer a:hover { color: var(--papaya-orange); }
+        @media (max-width: 600px) {
+            .footer-content { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </a>
+            <div class="nav-right">
+                <a href="guide.html" class="nav-link">Producer Guide</a>
+                <a href="pilots.html" class="nav-link">Find Pilots</a>
+                <a href="signup.html" class="nav-cta">Get Listed Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> <span> / </span>
+        <a href="guide.html">Producer Guide</a> <span> / </span>
+        <span style="color: var(--papaya-orange);">Hiring Checklist</span>
+    </div>
+
+    <section class="hero">
+        <div class="hero-bg"><div class="hero-glow"></div></div>
+        <div class="hero-content">
+            <h1>Drone Pilot <span>Hiring Checklist</span></h1>
+            <p class="hero-sub">Everything you need to verify before booking a drone pilot. From licensing and insurance to portfolio review and safety standards.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+
+            <!-- Category 1: Licensing -->
+            <div class="checklist-category">
+                <div class="category-header">
+                    <div class="category-number">1</div>
+                    <div class="category-title">
+                        <h3>Licensing & Certification</h3>
+                        <p>Legal requirements for commercial drone operation</p>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Valid Commercial Drone License <span class="check-badge badge-required">Required</span></h4>
+                            <p>Pilot must hold a valid commercial license for their country of operation: RePL (Australia), Part 107 (USA), PfCO/GVC (UK), or equivalent. Ask to see the actual certificate, not just a claim.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>License Current & Not Expired <span class="check-badge badge-required">Required</span></h4>
+                            <p>Verify the expiration date on their license. Most licenses require renewal every 1-2 years with continuing education requirements.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Additional Endorsements (If Needed) <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>For specialized work: night operations, beyond visual line of sight (BVLOS), or operations over people may require additional certifications.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Company/Operator Registration <span class="check-badge badge-required">Required</span></h4>
+                            <p>If applicable, verify they operate under a registered drone operator (ReOC in Australia, CAA registration in UK). This is required for commercial work in many jurisdictions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 2: Insurance -->
+            <div class="checklist-category">
+                <div class="category-header">
+                    <div class="category-number">2</div>
+                    <div class="category-title">
+                        <h3>Insurance Coverage</h3>
+                        <p>Protecting your production from liability</p>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Public Liability Insurance <span class="check-badge badge-required">Required</span></h4>
+                            <p>Minimum $10 million AUD / $5 million USD coverage recommended for professional work. Higher limits for feature films and high-value productions. Request Certificate of Currency.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Hull/Equipment Insurance <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>Covers damage to the drone and camera equipment. Important to ensure the pilot can complete the job even if equipment is damaged.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Your Production as Additional Insured <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>For larger productions, request to be named as an additional insured on their policy. This provides direct coverage for your production company.</p>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <h4>⚠️ Insurance Warning</h4>
+                        <p>Never accept "I have insurance" without seeing the Certificate of Currency. Verify the policy is current, covers commercial operations, and has adequate limits for your production. Some hobbyist policies explicitly exclude commercial work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 3: Experience -->
+            <div class="checklist-category">
+                <div class="category-header">
+                    <div class="category-number">3</div>
+                    <div class="category-title">
+                        <h3>Experience & Portfolio</h3>
+                        <p>Verifying skills and track record</p>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Relevant Showreel/Portfolio <span class="check-badge badge-required">Required</span></h4>
+                            <p>Review their work for quality, style, and relevance to your project. Look for shots similar to what you need. A great real estate pilot may not be the right fit for FPV action sequences.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Experience with Your Platform/Camera <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>If you need specific equipment (Inspire 3, Heavy Lift with RED, FPV), verify they have hands-on experience with that exact setup.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Similar Project Experience <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>Have they worked on similar productions? Feature film experience is different from corporate videos. Ask specifically about projects like yours.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>References from Previous Clients <span class="check-badge badge-optional">Optional</span></h4>
+                            <p>For major productions, consider requesting references. A quick call to a previous production manager can reveal a lot about professionalism and reliability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 4: Equipment -->
+            <div class="checklist-category">
+                <div class="category-header">
+                    <div class="category-number">4</div>
+                    <div class="category-title">
+                        <h3>Equipment & Backup</h3>
+                        <p>Ensuring reliable execution on the day</p>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Appropriate Platform for the Job <span class="check-badge badge-required">Required</span></h4>
+                            <p>Verify the pilot owns or has access to the right drone for your needs. A Mavic may not be suitable for a Super Bowl commercial.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Backup Aircraft <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>For critical shoots, ensure they have a backup drone in case of mechanical issues. Don't lose a shoot day because of equipment failure.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Sufficient Batteries <span class="check-badge badge-required">Required</span></h4>
+                            <p>Flight time is limited by batteries. Ensure they have enough batteries for your shoot day. Rule of thumb: minimum 4-6 batteries for a full day.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>ND Filters & Accessories <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>Professional cinematography requires ND filters for proper exposure control. Ensure they have a full set of filters and any other required accessories.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category 5: Safety & Operations -->
+            <div class="checklist-category">
+                <div class="category-header">
+                    <div class="category-number">5</div>
+                    <div class="category-title">
+                        <h3>Safety & Operations</h3>
+                        <p>Protecting your cast, crew, and production</p>
+                    </div>
+                </div>
+                <div class="category-body">
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Site Assessment Capability <span class="check-badge badge-required">Required</span></h4>
+                            <p>Professional pilots conduct site assessments to identify hazards, airspace restrictions, and operational requirements before the shoot.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Risk Assessment Documentation <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>For larger productions, pilots should provide a written risk assessment. This protects both parties and demonstrates professionalism.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Airspace & Permit Knowledge <span class="check-badge badge-required">Required</span></h4>
+                            <p>The pilot should be able to identify if your location requires special permits or airspace authorizations. They should handle these arrangements.</p>
+                        </div>
+                    </div>
+                    <div class="checklist-item">
+                        <div class="check-box"></div>
+                        <div class="check-content">
+                            <h4>Safety Briefing Protocol <span class="check-badge badge-recommended">Recommended</span></h4>
+                            <p>Ask if they conduct safety briefings for cast and crew. Everyone on set should know what to do when the drone is flying.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="questions-section">
+                <h3>Questions to Ask During Screening</h3>
+                <div class="question-item">
+                    <span class="q-icon">Q:</span>
+                    <p>"Can you walk me through your typical safety protocols on set?"</p>
+                </div>
+                <div class="question-item">
+                    <span class="q-icon">Q:</span>
+                    <p>"What happens if the weather doesn't cooperate on shoot day?"</p>
+                </div>
+                <div class="question-item">
+                    <span class="q-icon">Q:</span>
+                    <p>"Have you flown this type of shot before? Can you show me examples?"</p>
+                </div>
+                <div class="question-item">
+                    <span class="q-icon">Q:</span>
+                    <p>"What backup equipment do you bring to a shoot?"</p>
+                </div>
+                <div class="question-item">
+                    <span class="q-icon">Q:</span>
+                    <p>"Who handles permits and airspace authorization?"</p>
+                </div>
+                <div class="question-item">
+                    <span class="q-icon">Q:</span>
+                    <p>"Can you send me your Certificate of Currency for insurance?"</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h4>💡 Pro Tip: The "What If" Test</h4>
+                <p>Ask the pilot: "What would you do if [scenario]?" Good pilots have clear protocols for equipment failure, sudden weather changes, unexpected aircraft in the area, or someone walking into the shot. Their answers reveal experience level and professionalism.</p>
+            </div>
+
+            <h3 style="font-size: 20px; font-weight: 700; margin-top: 60px; margin-bottom: 16px;">Red Flags to Watch For</h3>
+            <div class="red-flags">
+                <div class="red-flag-item">
+                    <h4>Can't Produce License</h4>
+                    <p>"I have one but can't find it" or "It's being renewed" are warning signs.</p>
+                </div>
+                <div class="red-flag-item">
+                    <h4>Vague Insurance Details</h4>
+                    <p>Hesitation when asked for Certificate of Currency or unclear coverage limits.</p>
+                </div>
+                <div class="red-flag-item">
+                    <h4>No Relevant Portfolio</h4>
+                    <p>Only showing landscape photography when you need commercial work.</p>
+                </div>
+                <div class="red-flag-item">
+                    <h4>Dismissive of Safety</h4>
+                    <p>"We'll figure it out on the day" or minimizing permit requirements.</p>
+                </div>
+                <div class="red-flag-item">
+                    <h4>Suspiciously Low Pricing</h4>
+                    <p>Well below market rates often means cutting corners on insurance or equipment.</p>
+                </div>
+                <div class="red-flag-item">
+                    <h4>No Backup Equipment</h4>
+                    <p>Only one drone and minimal batteries for a full-day commercial shoot.</p>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Find <span>Verified Pilots</span></h2>
+                <p>All pilots on Drone Pro Hub are verified for licensing, insurance, and experience. Skip the checklist and hire with confidence.</p>
+                <a href="pilots.html" class="btn-primary">Browse Verified Pilots</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>© 2026 Drone Pro Hub. All rights reserved.</div>
+            <div>
+                <a href="guide.html">Back to Producer Guide</a> ·
+                <a href="pilots.html">Find Pilots</a> ·
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

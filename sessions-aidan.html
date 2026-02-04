@@ -345,21 +345,14 @@
         }
 
         .hero-container {
-            max-width: 1400px;
+            max-width: 900px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            display: flex;
+            flex-direction: column;
             align-items: center;
+            text-align: center;
             position: relative;
             z-index: 1;
-        }
-
-        @media (max-width: 900px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
         }
 
         .hero-content h1 {
@@ -480,12 +473,15 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 32px;
             margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 700px) {
             .pricing-grid {
                 grid-template-columns: 1fr;
             }
@@ -1022,7 +1018,6 @@
                 <p class="hero-sub">Learn cinematography, career strategy, and production techniques directly from a Hollywood aerial cinematographer with credits on major films and TV productions.</p>
                 <button class="btn-primary">Schedule a Session</button>
             </div>
-            <div class="hero-photo">🎬</div>
         </div>
     </section>
 
@@ -1065,7 +1060,7 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="pricing-duration">30 Minutes</div>
-                    <div class="pricing-amount">$150</div>
+                    <div class="pricing-amount">$180</div>
                     <p class="pricing-desc">Quick consultation</p>
                     <ul class="pricing-features">
                         <li>✓ Quick questions</li>
@@ -1084,19 +1079,6 @@
                         <li>✓ Personalized feedback</li>
                         <li>✓ Recordable</li>
                         <li>✓ Follow-up email</li>
-                    </ul>
-                    <button class="btn-primary" style="width: 100%;">Book Now</button>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-duration">90 Minutes</div>
-                    <div class="pricing-amount">$400</div>
-                    <p class="pricing-desc">Intensive coaching</p>
-                    <ul class="pricing-features">
-                        <li>✓ In-depth mentoring</li>
-                        <li>✓ Portfolio review</li>
-                        <li>✓ Action plan</li>
-                        <li>✓ 30-day follow-up</li>
                     </ul>
                     <button class="btn-primary" style="width: 100%;">Book Now</button>
                 </div>

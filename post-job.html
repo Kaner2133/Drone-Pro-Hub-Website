@@ -907,6 +907,13 @@
                                 <input type="checkbox" id="vfx" name="platform" value="vfx">
                                 <label for="vfx">VFX</label>
                             </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="platform-other" name="platform" value="other" onchange="toggleOtherPlatform()">
+                                <label for="platform-other">Other</label>
+                            </div>
+                        </div>
+                        <div id="other-platform-container" style="display: none; margin-top: 12px;">
+                            <input type="text" id="other-platform-text" name="other-platform" placeholder="Please specify your platform requirement...">
                         </div>
                     </div>
 
@@ -1026,6 +1033,15 @@
 
         function toggleSubmenu(item) {
             item.classList.toggle('expanded');
+        }
+
+        function toggleOtherPlatform() {
+            const checkbox = document.getElementById('platform-other');
+            const container = document.getElementById('other-platform-container');
+            container.style.display = checkbox.checked ? 'block' : 'none';
+            if (!checkbox.checked) {
+                document.getElementById('other-platform-text').value = '';
+            }
         }
     </script>
 

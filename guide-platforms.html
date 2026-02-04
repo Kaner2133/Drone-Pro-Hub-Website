@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Platform Guides - Deep Dive | Drone Pro Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --papaya-orange: #FF8000;
+            --phantom-black: #1A1A1A;
+            --dark-grey: #333333;
+            --mid-grey: #666666;
+            --white: #FFFFFF;
+        }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--phantom-black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+        .nav {
+            background: rgba(26, 26, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid #2a2a2a;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--papaya-orange);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 11px;
+            color: var(--phantom-black);
+        }
+        .logo-text {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            color: var(--white);
+        }
+        .logo-text span { color: var(--papaya-orange); }
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+        }
+        .nav-link:hover { color: var(--white); background: rgba(255,255,255,0.05); }
+        .nav-cta {
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 14px;
+            font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+
+        .breadcrumb {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 24px 0;
+        }
+        .breadcrumb a { color: #666; text-decoration: none; font-size: 14px; }
+        .breadcrumb a:hover { color: var(--papaya-orange); }
+        .breadcrumb span { color: #666; font-size: 14px; }
+
+        .hero {
+            position: relative;
+            padding: 60px 24px 80px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+        .hero-glow {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(255, 128, 0, 0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+        }
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(36px, 6vw, 56px);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .hero h1 span { color: var(--papaya-orange); }
+        .hero-sub {
+            font-size: 18px;
+            color: #888;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section { padding: 80px 24px; }
+        .section-dark { background: #0d0d0d; }
+        .container { max-width: 1100px; margin: 0 auto; }
+
+        /* Platform Navigation */
+        .platform-nav {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+        .platform-nav-item {
+            background: #252525;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #888;
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+        }
+        .platform-nav-item:hover, .platform-nav-item.active {
+            background: rgba(255, 128, 0, 0.1);
+            border-color: var(--papaya-orange);
+            color: var(--papaya-orange);
+        }
+
+        /* Platform Section */
+        .platform-section {
+            margin-bottom: 100px;
+            scroll-margin-top: 100px;
+        }
+        .platform-header {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        .platform-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--papaya-orange) 0%, #ff6600 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        .platform-title h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+        .platform-title p {
+            font-size: 16px;
+            color: var(--papaya-orange);
+            margin-top: 4px;
+        }
+
+        .platform-overview {
+            font-size: 17px;
+            color: #aaa;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        /* Specs Grid */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 800px) {
+            .specs-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .spec-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        .spec-card .label {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        .spec-card .value {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+
+        /* Shot Types */
+        .shot-types {
+            margin-bottom: 40px;
+        }
+        .shot-types h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--papaya-orange);
+            margin-bottom: 20px;
+        }
+        .shot-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+        @media (max-width: 700px) {
+            .shot-grid { grid-template-columns: 1fr; }
+        }
+        .shot-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--papaya-orange);
+        }
+        .shot-card h4 {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        .shot-card p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.6;
+        }
+
+        /* Sample Work */
+        .sample-work {
+            margin-bottom: 40px;
+        }
+        .sample-work h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .work-examples {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .work-tag {
+            background: #252525;
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        /* Considerations */
+        .considerations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 700px) {
+            .considerations { grid-template-columns: 1fr; }
+        }
+        .pros, .cons {
+            background: #1a1a1a;
+            padding: 24px;
+            border-radius: 12px;
+        }
+        .pros h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #22c55e;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .cons h4 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #f87171;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        .pros li, .cons li {
+            font-size: 14px;
+            color: #aaa;
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a2a;
+            list-style: none;
+        }
+        .pros li:last-child, .cons li:last-child { border-bottom: none; }
+
+        /* Budget Range */
+        .budget-range {
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.1) 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .budget-label {
+            font-size: 14px;
+            color: #888;
+        }
+        .budget-value {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--papaya-orange);
+        }
+        .budget-note {
+            font-size: 13px;
+            color: #666;
+        }
+
+        /* Divider */
+        .platform-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, #333 50%, transparent 100%);
+            margin: 60px 0;
+        }
+
+        /* CTA */
+        .cta-box {
+            background: linear-gradient(135deg, rgba(255, 128, 0, 0.1) 0%, #1a1a1a 100%);
+            border: 1px solid rgba(255, 128, 0, 0.3);
+            border-radius: 16px;
+            padding: 60px 40px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .cta-box h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .cta-box h2 span { color: var(--papaya-orange); }
+        .cta-box p {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 32px;
+        }
+        .btn-primary {
+            display: inline-flex;
+            background: var(--papaya-orange);
+            color: var(--phantom-black);
+            font-size: 16px;
+            font-weight: 700;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+        }
+
+        .footer {
+            background: #0d0d0d;
+            border-top: 1px solid #2a2a2a;
+            padding: 60px 24px 40px;
+            margin-top: 80px;
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #666;
+        }
+        .footer a { color: #666; text-decoration: none; }
+        .footer a:hover { color: var(--papaya-orange); }
+        @media (max-width: 600px) {
+            .footer-content { flex-direction: column; gap: 16px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">DPH</div>
+                <div class="logo-text">DRONE PRO <span>HUB</span></div>
+            </a>
+            <div class="nav-right">
+                <a href="guide.html" class="nav-link">Producer Guide</a>
+                <a href="pilots.html" class="nav-link">Find Pilots</a>
+                <a href="signup.html" class="nav-cta">Get Listed Free</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a> <span> / </span>
+        <a href="guide.html">Producer Guide</a> <span> / </span>
+        <span style="color: var(--papaya-orange);">Platform Guides</span>
+    </div>
+
+    <section class="hero">
+        <div class="hero-bg"><div class="hero-glow"></div></div>
+        <div class="hero-content">
+            <h1>Drone <span>Platform</span> Guides</h1>
+            <p class="hero-sub">Deep dives into each drone platform. Specifications, capabilities, ideal use cases, and what to expect when booking each type.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <nav class="platform-nav">
+                <a href="#mavic" class="platform-nav-item">DJI Mavic</a>
+                <a href="#inspire" class="platform-nav-item">DJI Inspire 3</a>
+                <a href="#heavy-lift" class="platform-nav-item">Heavy Lift</a>
+                <a href="#fpv" class="platform-nav-item">FPV</a>
+                <a href="#mini" class="platform-nav-item">Mini Drones</a>
+            </nav>
+
+            <!-- DJI Mavic -->
+            <div id="mavic" class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-icon">🚁</div>
+                    <div class="platform-title">
+                        <h2>DJI Mavic Series</h2>
+                        <p>Portable Professional Power</p>
+                    </div>
+                </div>
+
+                <p class="platform-overview">
+                    The Mavic series represents the sweet spot of professional drone cinematography: excellent image quality in an incredibly portable package. The Mavic 3 Pro and Mavic 3 Cine deliver Hasselblad-quality footage with a 4/3" sensor, ProRes recording options, and flight times exceeding 40 minutes. It's the go-to choice when you need professional results without the complexity of larger platforms.
+                </p>
+
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="label">Sensor Size</div>
+                        <div class="value">4/3" CMOS</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Max Resolution</div>
+                        <div class="value">5.1K / 50fps</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Flight Time</div>
+                        <div class="value">43 minutes</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Weight</div>
+                        <div class="value">895g</div>
+                    </div>
+                </div>
+
+                <div class="shot-types">
+                    <h3>Signature Shot Types</h3>
+                    <div class="shot-grid">
+                        <div class="shot-card">
+                            <h4>Establishing Aerials</h4>
+                            <p>Wide shots that set location context. Perfect for opening sequences and scene transitions.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>Reveals & Orbits</h4>
+                            <p>Smooth circular movements around subjects. Great for property tours and product reveals.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>Top-Down / Nadir</h4>
+                            <p>Looking straight down for geometric patterns, crowds, and unique perspectives.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sample-work">
+                    <h3>Commonly Used For</h3>
+                    <div class="work-examples">
+                        <span class="work-tag">Real Estate Marketing</span>
+                        <span class="work-tag">Corporate Videos</span>
+                        <span class="work-tag">Wedding Films</span>
+                        <span class="work-tag">Travel Content</span>
+                        <span class="work-tag">Social Media</span>
+                        <span class="work-tag">Events</span>
+                        <span class="work-tag">News/Journalism</span>
+                        <span class="work-tag">YouTube Productions</span>
+                    </div>
+                </div>
+
+                <div class="considerations">
+                    <div class="pros">
+                        <h4>✓ Advantages</h4>
+                        <ul>
+                            <li>Extremely portable - fits in a backpack</li>
+                            <li>Quick setup time (under 10 minutes)</li>
+                            <li>Excellent image quality for the size</li>
+                            <li>Long flight times per battery</li>
+                            <li>Lower day rates than larger platforms</li>
+                            <li>Quiet operation for noise-sensitive locations</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>✗ Limitations</h4>
+                        <ul>
+                            <li>Fixed lens - no optical zoom options</li>
+                            <li>Limited wind resistance (up to ~30 mph)</li>
+                            <li>Smaller sensor than full-frame options</li>
+                            <li>Not ideal for cinema-grade color work</li>
+                            <li>Single operator only</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="budget-range">
+                    <div>
+                        <div class="budget-label">Typical Day Rate</div>
+                        <div class="budget-value">$1,000 - $1,800</div>
+                    </div>
+                    <div class="budget-note">Half-day rates typically 60-70% of full day</div>
+                </div>
+            </div>
+
+            <div class="platform-divider"></div>
+
+            <!-- DJI Inspire 3 -->
+            <div id="inspire" class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-icon">🎬</div>
+                    <div class="platform-title">
+                        <h2>DJI Inspire 3</h2>
+                        <p>The Broadcast Industry Standard</p>
+                    </div>
+                </div>
+
+                <p class="platform-overview">
+                    The Inspire 3 is the workhorse of professional aerial cinematography. With a full-frame sensor, interchangeable lenses, and 8K ProRes RAW recording, it delivers broadcast and cinema-quality footage that matches or exceeds traditional camera packages. The dual-operator capability allows separate control of flight and camera, enabling complex, precise movements that single-operator systems can't achieve.
+                </p>
+
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="label">Sensor Size</div>
+                        <div class="value">Full Frame</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Max Resolution</div>
+                        <div class="value">8K / 25fps</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Flight Time</div>
+                        <div class="value">28 minutes</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Dynamic Range</div>
+                        <div class="value">14+ stops</div>
+                    </div>
+                </div>
+
+                <div class="shot-types">
+                    <h3>Signature Shot Types</h3>
+                    <div class="shot-grid">
+                        <div class="shot-card">
+                            <h4>Complex Camera Moves</h4>
+                            <p>Dual-op allows pan/tilt independent of flight path. Shoot reveals while flying sideways.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>Tracking Shots</h4>
+                            <p>Follow moving vehicles or talent with professional smoothness and precise framing.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>Cinematic Aerials</h4>
+                            <p>Shallow depth of field, anamorphic looks, and color science that matches cinema cameras.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sample-work">
+                    <h3>Commonly Used For</h3>
+                    <div class="work-examples">
+                        <span class="work-tag">Broadcast Television</span>
+                        <span class="work-tag">National Commercials</span>
+                        <span class="work-tag">Documentaries</span>
+                        <span class="work-tag">Music Videos</span>
+                        <span class="work-tag">Sports Coverage</span>
+                        <span class="work-tag">Automotive</span>
+                        <span class="work-tag">Premium Corporate</span>
+                        <span class="work-tag">Streaming Content</span>
+                    </div>
+                </div>
+
+                <div class="considerations">
+                    <div class="pros">
+                        <h4>✓ Advantages</h4>
+                        <ul>
+                            <li>Full-frame cinema quality</li>
+                            <li>Interchangeable lenses (18mm-80mm)</li>
+                            <li>Dual operator for complex moves</li>
+                            <li>8K ProRes RAW internal recording</li>
+                            <li>Better wind resistance than Mavic</li>
+                            <li>Professional color science for grading</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>✗ Limitations</h4>
+                        <ul>
+                            <li>Longer setup time (15-20 minutes)</li>
+                            <li>Requires more landing space</li>
+                            <li>Higher cost than smaller platforms</li>
+                            <li>Shorter flight times than Mavic</li>
+                            <li>Louder operation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="budget-range">
+                    <div>
+                        <div class="budget-label">Typical Day Rate</div>
+                        <div class="budget-value">$2,000 - $3,500</div>
+                    </div>
+                    <div class="budget-note">Add $500-800 for dedicated camera operator</div>
+                </div>
+            </div>
+
+            <div class="platform-divider"></div>
+
+            <!-- Heavy Lift -->
+            <div id="heavy-lift" class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-icon">🎥</div>
+                    <div class="platform-title">
+                        <h2>Heavy Lift Platforms</h2>
+                        <p>Cinema Cameras in the Sky</p>
+                    </div>
+                </div>
+
+                <p class="platform-overview">
+                    Heavy lift drones like the Freefly Alta X, DJI Matrice 600, or custom builds can carry full cinema cameras including RED Komodo, ARRI Alexa Mini, and Sony Venice. These platforms deliver identical image quality to your ground camera package, ensuring seamless integration in high-end productions where camera matching is essential. They're the choice for feature films, Super Bowl commercials, and any production where compromise isn't an option.
+                </p>
+
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="label">Payload Capacity</div>
+                        <div class="value">Up to 15kg</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Camera Options</div>
+                        <div class="value">RED, ARRI, Sony</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Flight Time</div>
+                        <div class="value">15-25 min</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Setup Time</div>
+                        <div class="value">30-45 min</div>
+                    </div>
+                </div>
+
+                <div class="shot-types">
+                    <h3>Signature Shot Types</h3>
+                    <div class="shot-grid">
+                        <div class="shot-card">
+                            <h4>Hero Establishing Shots</h4>
+                            <p>Opening sequences that demand the absolute best image quality for theatrical release.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>Camera-Matched Aerials</h4>
+                            <p>Seamless integration with ground footage. Same sensor, same color, same quality.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>Specialty Lens Work</h4>
+                            <p>Anamorphic, vintage glass, and specialty optics that smaller drones can't carry.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sample-work">
+                    <h3>Commonly Used For</h3>
+                    <div class="work-examples">
+                        <span class="work-tag">Feature Films</span>
+                        <span class="work-tag">Netflix/HBO Originals</span>
+                        <span class="work-tag">Super Bowl Commercials</span>
+                        <span class="work-tag">Theatrical Releases</span>
+                        <span class="work-tag">IMAX Productions</span>
+                        <span class="work-tag">High-End Automotive</span>
+                    </div>
+                </div>
+
+                <div class="considerations">
+                    <div class="pros">
+                        <h4>✓ Advantages</h4>
+                        <ul>
+                            <li>True cinema-grade image quality</li>
+                            <li>Perfect camera matching with ground units</li>
+                            <li>Any lens combination possible</li>
+                            <li>RAW recording at highest quality</li>
+                            <li>Professional gimbal stabilization</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>✗ Limitations</h4>
+                        <ul>
+                            <li>Highest cost platform</li>
+                            <li>Shortest flight times</li>
+                            <li>Longest setup time</li>
+                            <li>Requires large crew (3-4 minimum)</li>
+                            <li>Limited to favorable weather only</li>
+                            <li>Requires significant landing zone</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="budget-range">
+                    <div>
+                        <div class="budget-label">Typical Day Rate</div>
+                        <div class="budget-value">$3,500 - $8,000+</div>
+                    </div>
+                    <div class="budget-note">Camera rental typically additional</div>
+                </div>
+            </div>
+
+            <div class="platform-divider"></div>
+
+            <!-- FPV -->
+            <div id="fpv" class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-icon">⚡</div>
+                    <div class="platform-title">
+                        <h2>FPV Drones</h2>
+                        <p>Immersive, Dynamic Movement</p>
+                    </div>
+                </div>
+
+                <p class="platform-overview">
+                    FPV (First Person View) drones have revolutionized action cinematography. Flying through tight spaces, following cars at 150 mph, or creating impossible one-take sequences—FPV creates shots that no other platform can achieve. From lightweight 5" builds carrying GoPros to cinema FPV rigs with RED cameras, there's an FPV solution for every production level. The immersive, dynamic movement style has become a defining visual language of modern filmmaking.
+                </p>
+
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="label">Top Speed</div>
+                        <div class="value">200+ km/h</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Camera Options</div>
+                        <div class="value">GoPro to RED</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Flight Time</div>
+                        <div class="value">3-8 minutes</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Size Range</div>
+                        <div class="value">3" to 10"</div>
+                    </div>
+                </div>
+
+                <div class="shot-types">
+                    <h3>Signature Shot Types</h3>
+                    <div class="shot-grid">
+                        <div class="shot-card">
+                            <h4>Chase Sequences</h4>
+                            <p>Following vehicles, athletes, or action at high speed with dynamic parallax and depth.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>One-Take Sequences</h4>
+                            <p>Seamless tours through buildings, events, or locations without cuts.</p>
+                        </div>
+                        <div class="shot-card">
+                            <h4>Gap & Proximity Flying</h4>
+                            <p>Through windows, around obstacles, and inches from subjects for maximum impact.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sample-work">
+                    <h3>Commonly Used For</h3>
+                    <div class="work-examples">
+                        <span class="work-tag">Action Films</span>
+                        <span class="work-tag">Car Commercials</span>
+                        <span class="work-tag">Extreme Sports</span>
+                        <span class="work-tag">Music Videos</span>
+                        <span class="work-tag">Real Estate Tours</span>
+                        <span class="work-tag">Event Coverage</span>
+                        <span class="work-tag">Gaming/Esports</span>
+                        <span class="work-tag">Automotive Launches</span>
+                    </div>
+                </div>
+
+                <div class="considerations">
+                    <div class="pros">
+                        <h4>✓ Advantages</h4>
+                        <ul>
+                            <li>Impossible shots become possible</li>
+                            <li>Incredible speed and agility</li>
+                            <li>Fits through tight spaces</li>
+                            <li>Dynamic, immersive movement</li>
+                            <li>Multiple size/camera options</li>
+                            <li>Highly specialized skill creates unique value</li>
+                        </ul>
+                    </div>
+                    <div class="cons">
+                        <h4>✗ Limitations</h4>
+                        <ul>
+                            <li>Very short flight times</li>
+                            <li>Higher crash risk than GPS drones</li>
+                            <li>Not suitable for slow, controlled shots</li>
+                            <li>Requires specialized pilot skills</li>
+                            <li>Limited stabilization on smaller builds</li>
+                            <li>Weather sensitive</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="budget-range">
+                    <div>
+                        <div class="budget-label">Typical Day Rate</div>
+                        <div class="budget-value">$2,500 - $5,000+</div>
+                    </div>
+                    <div class="budget-note">Cinema FPV with RED: $5,000-$8,000+</div>
+                </div>
+            </div>
+
+            <div class="platform-divider"></div>
+
+            <!-- Mini Drones -->
+            <div id="mini" class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-icon">✨</div>
+                    <div class="platform-title">
+                        <h2>Mini Drones</h2>
+                        <p>Sub-250g Lightweight Solutions</p>
+                    </div>
+                </div>
+
+                <p class="platform-overview">
+                    Sub-250g drones like the DJI Mini 4 Pro occupy a unique regulatory space—in many countries, they don't require registration or commercial licensing for certain uses. While not suitable for high-end production work, they're perfect for supplementary footage, social content, and situations where larger drones can't operate due to space or permit restrictions.
+                </p>
+
+                <div class="specs-grid">
+                    <div class="spec-card">
+                        <div class="label">Weight</div>
+                        <div class="value">Under 250g</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Max Resolution</div>
+                        <div class="value">4K / 60fps</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Flight Time</div>
+                        <div class="value">30+ minutes</div>
+                    </div>
+                    <div class="spec-card">
+                        <div class="label">Sensor</div>
+                        <div class="value">1/1.3"</div>
+                    </div>
+                </div>
+
+                <div class="sample-work">
+                    <h3>Commonly Used For</h3>
+                    <div class="work-examples">
+                        <span class="work-tag">Social Media Content</span>
+                        <span class="work-tag">Travel Vlogs</span>
+                        <span class="work-tag">Quick B-Roll</span>
+                        <span class="work-tag">Restricted Airspace</span>
+                        <span class="work-tag">Indoor (with care)</span>
+                        <span class="work-tag">Run-and-Gun</span>
+                    </div>
+                </div>
+
+                <div class="budget-range">
+                    <div>
+                        <div class="budget-label">Typical Day Rate</div>
+                        <div class="budget-value">$500 - $1,000</div>
+                    </div>
+                    <div class="budget-note">Often used as supplementary platform</div>
+                </div>
+            </div>
+
+            <div class="cta-box">
+                <h2>Ready to <span>Book Your Pilot?</span></h2>
+                <p>Find experienced pilots specialized in the platform you need.</p>
+                <a href="pilots.html" class="btn-primary">Browse Pilots by Platform</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div>© 2026 Drone Pro Hub. All rights reserved.</div>
+            <div>
+                <a href="guide.html">Back to Producer Guide</a> ·
+                <a href="pilots.html">Find Pilots</a> ·
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
